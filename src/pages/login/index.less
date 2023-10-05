@@ -1,0 +1,112 @@
+.loginPage{
+  width: calc(100vw - .02rem);
+  height: calc(100vh - .02rem);
+  min-height: 9.2rem;
+  background-color: rgba(22,208,255,0.15);
+  background-image: url("~@/assets/login/loginBg.png");
+  background-repeat:no-repeat;
+  background-position: center;
+  background-origin: content-box;
+  border: 1px solid #3699FF;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .loginArea{
+    display: flex;
+    width: 6rem;
+    height: 4.2rem;
+    max-width: 65.625%;
+    max-height: 66.2962962962963%;
+    background: white;
+    box-shadow: #ccc 0 0 .1rem;
+
+    .wrapperLoginLeft{
+      width: 30.16%;
+      height: 100%;
+      background-image: url("~@/assets/login/loginLeft1.png") ;
+      background-repeat: no-repeat;
+      background-size: 232.5% 130%;
+      background-position: 32% 16%;
+      .loginLeft{
+        height: 1.2rem;
+        gap: .08rem;
+        img{
+          height: .6rem;
+        }
+        .leftTitle{
+          font-family: 'Microsoft YaHei','Microsoft YaHei UI',SourceHanSansCN, serif, sans-serif, cursive, fantasy, monospace;
+          color: #FFFFFF;
+
+          .title_zh{
+            font-size: .24rem;
+            font-weight: 800;
+          }
+          .title_en{
+            font-size: .16rem;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    .rightArea{
+      position: relative;
+      width: 100%;;
+      font-size: .24rem;
+      font-family: SourceHanSansCN, serif, sans-serif, cursive, fantasy, monospace;
+
+      .registerArea{
+        position: absolute;
+        top: .2rem;
+        right: .29rem;
+        .registerTips{
+          color: #BDBDBD;
+        }
+        a{
+          cursor: pointer;
+          color: #5E7CEC;
+        }
+
+      }
+
+      .wrapperLogin{
+        width: 55.5%;
+
+        .loginTitle{
+          font-size: .31rem;
+          font-weight: 400;
+          color: #BFBFBF;
+        }
+
+        .loginBtn{
+          width: 100%;
+          background: #179AD9;
+          height: .6rem;
+          box-shadow: 0 .04rem .18rem 0 rgba(0,118,255,0.31);
+          border-radius: .39rem;
+          color: white;
+          font-size: .28rem;
+          font-weight: 400;
+          cursor: pointer;
+          transition: box-shadow 0.2s ease 0s, transform 0.2s ease 0s;
+
+          &:active{
+            box-shadow: #ccc 0 0 .1rem;
+            transform: scale(1.0125);
+          }
+        }
+
+        :global(.ant-form){
+          width: 100%;
+          label{
+            font-size: .24rem;
+            font-weight: 400;
+            color: #929292;
+          }
+        }
+      }
+    }
+  }
+}

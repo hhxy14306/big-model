@@ -1,0 +1,144 @@
+.resourceOverview {
+  margin: .2rem .24rem;
+  .title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .content{
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+
+    .wrapperCalculation{
+      width: 100%;
+      .calculationHeader{
+        display: flex;
+        align-items: center;
+        margin-bottom: .15rem;
+        .calculationTitle{
+          width: 3.2rem;
+          border-left: .05rem solid rgb(64,145,247);
+          font-size: .18rem;
+          padding-left: .05rem;
+          font-weight: 600;
+          height: .18rem;
+          line-height: .18rem;
+        }
+        .calculationInfo{
+          margin-left: .4rem;
+          width: calc(100% - 2.4rem);
+          .chainInfoItemValue{
+            margin-left: .1rem;
+          }
+        }
+      }
+
+      .calculationContent{
+        display: flex;
+        flex-wrap: wrap;
+        gap: .2rem;
+        .calculationItem{
+          display: flex;
+          width: calc((100% - .6rem)/4);
+          height: 2.27rem;
+          .left{
+            width: 38.2%;
+            height: calc(100% - 0.22rem);
+            padding: .12rem 0;
+            text-align: center;
+            font-size: .16rem;
+            background: rgb(64,145,247);
+            //background-image: url("~@/assets/yay.jpg");
+            //background-repeat:no-repeat;
+            //background-size: 100% 100%;
+            .name, .algorithmName{
+              font-size: .14rem;
+              font-weight: 500;
+              color: white;
+              //span{
+              //  font-size: .14rem;
+              //}
+            }
+
+            img{
+              width: 80%;
+              height: 50%;
+              object-fit: fill;
+              object-position: center;
+              margin: .2rem auto;
+            }
+          }
+          .leftDisabled{
+            background: rgb(169, 169, 169);
+          }
+          .right{
+            width: 61.8%;
+            height: 100%;
+            border: 1px solid rgb(227,227,227);
+            .header{
+              padding: .08rem .1rem;
+              & > span > span{
+                margin-right: .05rem;
+              }
+              & > span > svg{
+                position: relative;
+                top: .008rem;
+                margin-right: .05rem;
+              }
+
+              .firstSpan{
+                margin-right: .1rem;
+              }
+              .status{
+                float: right;
+                :global(.ant-badge-status){
+                 // margin-right: .05rem;
+                  :global(.ant-badge-status-dot){
+                    width: .12rem;
+                    height: .12rem;
+                  }
+                }
+
+              }
+            }
+
+            .rightContent{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              height: 1.1rem;
+              padding: .12rem;
+              border-top: 1px solid rgb(248,248,248);
+              border-bottom: 1px solid rgb(248,248,248);
+              .contentItem{
+                background: gold;
+                padding: 0 .05rem;
+                font-size: .16rem;
+                .value{
+                  text-align: center;
+                }
+                .label{
+                  color: rgb(131,131,131);
+                }
+              }
+            }
+            .footer{
+              display: flex;
+              justify-content: space-between;
+              padding: .1rem ;
+              gap: .15rem;
+              button{
+                width: 50%;
+              }
+            }
+          }
+        }
+
+        .noData{
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d26e99aa-ee19-4e7d-bcf9-c5c6f347159d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Python/aa/dm2" beforeDir="false" afterPath="$PROJECT_DIR$/../../Python/aa/dm2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../gc-framework-master/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../gc-framework-master/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/src/main/java/com/example/demo/DemoApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/src/main/java/com/example/demo/NormalRocketMqListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/src/main/java/com/example/demo/OrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/demo/src/test/java/com/example/demo/DemoApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/digital-people" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/digital-people" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/AuthorizationServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/AuthorizationServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/DefaultSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/DefaultSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/password/OpenAuthEndpointUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/password/OpenAuthEndpointUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/password/OpenAuthPasswordAuthenticationConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/password/OpenAuthPasswordAuthenticationConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/password/OpenAuthPasswordAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/password/OpenAuthPasswordAuthenticationProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/password/OpenAuthPasswordAuthenticationToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/password/OpenAuthPasswordAuthenticationToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/config/webConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/controller/DeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/controller/DeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/controller/Oauth2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/controller/Oauth2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/service/SysUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/service/SysUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/java/com/jsq/oauth2Server/service/impl/SysUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../sso/oauth2-demo/oauth2-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-model/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/layouts__index.b5b15717.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.02844b34.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__log__index.328cefd2.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/umi.324e118f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/public/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../simulation/public/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/simulation/assets/401-b29d2636.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/simulation/assets/index-0791271b.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/simulation/assets/index-31757838.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/simulation/assets/index-47537b9b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/simulation/assets/index-6a7ab0f2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/simulation/assets/index-a0f707d1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/simulation/assets/index-dfdf667f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/simulation/assets/index-fa2fe52c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/simulation/assets/request-47ceda3b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/simulation/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../simulation/simulation/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/simulation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../simulation/simulation/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/src/views/home/components/create-update-app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../simulation/src/views/home/components/create-update-app.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/src/views/home/components/create-update-node.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../simulation/src/views/home/components/create-update-node.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/src/views/home/components/g6.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../simulation/src/views/home/components/g6.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/src/views/home/components/resource-usage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../simulation/src/views/home/components/resource-usage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/src/views/home/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../simulation/src/views/home/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/src/views/report/components/run-analysis.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../simulation/src/views/report/components/run-analysis.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulation/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../simulation/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../论坛/forum-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../论坛/forum-server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../统一认证/platform-web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../统一认证/platform-web/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/public/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../统一认证/platform-web/public/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/base-layout/a.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../统一认证/platform-web/src/base-layout/a.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/base-layout/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../统一认证/platform-web/src/base-layout/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/base-layout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../统一认证/platform-web/src/base-layout/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/base-layout/request/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../统一认证/platform-web/src/base-layout/request/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/admin/assets/background.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/admin/styles/index.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/admin/styles/mixin.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/admin/styles/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/admin/styles/transition.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/admin/styles/variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/login/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/login/asstes/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/login/asstes/background.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/login/asstes/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/login/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../统一认证/platform-web/src/pages/login/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/public/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/src/pages/admin/assets/aa.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/src/pages/admin/assets/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/src/pages/login/Login.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/src/pages/login/assets/aa.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/src/pages/login/assets/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/src/pages/login/assets/base.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/src/pages/login/assets/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/src/pages/login/assets/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/src/pages/login/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../统一认证/platform-web1/src/services/axios.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectId" id="2Vfbbh3e4VJvuyqwbAYn19423Sg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/user-mgt" />
+    <property name="nodejs_package_manager_path" value="pnpm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/user-mgt" />
+      <recent name="$PROJECT_DIR$/src/pages" />
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/src/pages/resource" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.build">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d26e99aa-ee19-4e7d-bcf9-c5c6f347159d" name="Default Changelist" comment="" />
+      <created>1695230155551</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695230155551</updated>
+      <workItem from="1695230156721" duration="2106000" />
+      <workItem from="1695232391953" duration="6698000" />
+      <workItem from="1695258098974" duration="31756000" />
+      <workItem from="1695661452565" duration="5171000" />
+      <workItem from="1695734352820" duration="7795000" />
+      <workItem from="1695751728517" duration="341000" />
+      <workItem from="1695752114422" duration="42702000" />
+      <workItem from="1696473810689" duration="2484000" />
+      <workItem from="1696495609995" duration="1802000" />
+    </task>
+    <task id="LOCAL-00001" summary="a">
+      <created>1695344792615</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1695344792616</updated>
+    </task>
+    <task id="LOCAL-00002" summary="a123">
+      <created>1695808220985</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695808220985</updated>
+    </task>
+    <task id="LOCAL-00003" summary="a123">
+      <created>1696495845769</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696495845769</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="a" />
+    <MESSAGE value="a123" />
+    <option name="LAST_COMMIT_MESSAGE" value="a123" />
+  </component>
+</project>

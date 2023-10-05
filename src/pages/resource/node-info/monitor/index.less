@@ -1,0 +1,58 @@
+.monitor{
+  //width: 100%;
+  margin-top: .1rem;
+  padding: .15rem 0;
+  background: white;
+  .headerArea{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 .15rem;
+    margin-bottom: .1rem;
+    .title{
+      font-size: .18rem;
+      font-weight: 600;
+    }
+
+    .operateArea{
+      display: flex;
+      gap: .15rem;
+      .timeArea{
+        cursor: pointer;
+        background: rgb(38,46,64);
+        color: white;
+        border-radius: .04rem;
+
+        .wrapperSpace{
+          padding: 0.05rem 0.1rem;
+          :global(.ant-space-item){
+            &:first-child{
+              width: 1.5rem;
+            }
+          }
+
+        }
+      }
+
+      :global(.anticon){
+        cursor: pointer;
+        color: white;
+        background: rgb(38,46,64);
+        border-radius: .04rem;
+        padding: 0 .1rem;
+      }
+    }
+  }
+  .wrapperChart{
+    .chartItem{
+      margin-bottom: .2rem;
+    }
+    background: rgb(249,251,253);
+    padding: 0.15rem;
+    .chartTitle{
+      font-weight: 600;
+      font-size: .18rem;
+    }
+    //width: 1000px;
+  }
+}

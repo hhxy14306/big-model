@@ -1,0 +1,105 @@
+
+html,
+body,
+#root {
+  font-size: 100px;
+  height: 100%;
+  margin: 0;
+  //font-family: 'Microsoft YaHei','Microsoft YaHei UI',SourceHanSansCN, serif, sans-serif, cursive, fantasy, monospace;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: none !important;
+  text-size-adjust: none !important;
+  background: #f0f4f8;
+}
+img{
+  -webkit-user-drag: none
+}
+
+a{
+  text-decoration:none;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+@screen-xs: 4.8rem;
+
+ul,
+ol {
+  list-style: none;
+}
+
+@media (max-width: @screen-xs) {
+}
+
+.flex_center_X_Y{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex_column_center_X_Y{
+  .flex_center_X_Y;
+  flex-direction: column;
+}
+
+.center_X_Y_transform{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ant-pro-grid-content-wide{
+  width: 100%;
+  max-width: 100%;
+}
+
+.ant-pro-top-nav-header-menu{
+  padding-right: .8rem;
+  .ant-pro-top-nav-header-base-menu{
+    .flex_center_X_Y;
+    gap: .4rem;
+
+    .ant-pro-base-menu-horizontal-item-title{
+      gap: .02rem;
+      font-size: .18rem;
+
+      .ant-pro-base-menu-horizontal-item-text-has-icon{
+        display: flex;
+        align-items: center;
+        gap: .04rem;
+        overflow: visible;
+      }
+
+      .resourceIcon_svg__icon{
+        margin-top: -.01rem;
+      }
+      .warnIcon_svg__icon{
+        margin-top: -.02rem;
+      }
+    }
+  }
+}
+
+.umi-plugin-layout-name{
+  color: rgba(255,255,255,0.65);
+}
+
+
+.ant-layout-content, .ant-pro-layout-content {
+  padding-block: .2rem !important;
+}
+
+
+
+.boxShadow{
+  box-shadow: #ccc 0 0 .1rem;
+}
+
