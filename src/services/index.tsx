@@ -6,6 +6,11 @@ export function login(data){
         data
     });
 }
+export function logOut(){
+    return request<any>(`/bigIntelligence/v1/user/logout`, {
+        method: 'post',
+    });
+}
 
 export function getCurrentUser(){
     //return request<any>(`/bigIntelligence/v1/user/info`);

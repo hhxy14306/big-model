@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import {Badge, Dropdown, Space, Button, Card, Spin, message, Tooltip, Modal, Row, Col} from 'antd';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
+import {Badge, Dropdown, Space, Button, Card, Spin, message, Tooltip, Modal, Row, Col, Checkbox} from 'antd';
 import styles from './index.less'
 import {useQuery} from "umi";
 import classnames from 'classnames'
-import aa from '@/assets/yay.jpg'
+import aa from '@/assets/no-model.png'
 import sceneSegmentation from '@/assets/scene-segmentation.png'
 import detectionClassification from '@/assets/detection-classification.png'
 import identify from '@/assets/identify.png'
@@ -48,6 +48,7 @@ export default () => {
     [2, {name: '识别', img: identify}],
     [3, {name: '变化检测', img: changes}],
   ])
+
   const statusConfig = {
     0: {
       value: 'default',
@@ -69,13 +70,35 @@ export default () => {
       label: '繁忙',
       desc: '虚拟核上模型运行状态正常，且正在处理遥感数据'
     },
-  }
+  };
+  const modelTypeConfig = [
+    {
+      key: "segmentation",
+      label: '场景分割模型'
+    },
+    {
+      key: "classification",
+      label: '检测分类模型'
+    },
+    {
+      key: 'recognition',
+      label: '识别模型'
+    },
+    {
+      key: 'change',
+      label: '变化检测模型'
+    }];
+
   const relationMap = useRef(new Map());
-  const [createTaskVisible, setCreateTaskVisible] = useState(false)
+  const [modelType, setModelType] = useState(null);
+  const [title, setTitle] = useState("选择虚拟核");
+  const [createTaskVisible, setCreateTaskVisible] = useState(false);
+  const [showSelect, setShowSelect] = useState(false);
   const [modelConfig, setModelConfig] = useImmer<any>({
     visible: false,
     record: {}
   });
+  const [checkData, setCheckData] = useImmer({})
 
   const [dirDetailData, setDirDetailData] = useImmer<any>({
     visible: false,
@@ -97,8 +120,8 @@ export default () => {
         actionType: i.algorithm_type,
         memoryTotal: i.vnpu_memory,
         cpuTotal: i.vnpu_aicpu,
-        memoryUsage: i.vnpu_memory,
-        cpuUsage: i.vnpu_aicpu,
+        memoryUsage: i.vnpu_memory_usage,
+        cpuUsage: i.vnpu_cpu_usage,
         ...i,
       }))
     }))
@@ -129,7 +152,7 @@ export default () => {
         break;
       case "1":
         Modal.confirm({
-          title: `模型 ${item.vnpu_name} 正在 ${item.chip_name} 上运行，是否停止？`,
+          title: `${modelTypeConfig[item.algorithm_type]?.label}（实例ID：${item.vnpu_name}）正在 ${item.chip_name}上运行，确认停止？`,
           onOk: (close)=>{
               updateInfer({
                 chip_tag: item.chip_name,
@@ -163,15 +186,47 @@ export default () => {
   console.log("relationMap",relationMap);
 
   useEffect(()=>{
-    console.log("get data123");
     getNodeStatusData().then();
     const timer = setInterval( async ()=>{
-      console.log("get data");
       await refetch();
       getNodeStatusData().then();
     }, 5 * 1000);
     return ()=>clearInterval(timer);
   },[]);
+
+  useEffect(()=>{
+    console.log(checkData)
+    let selected = false
+    for(let name in checkData){
+      if(checkData.hasOwnProperty(name) && checkData[name]){
+        selected = true;
+      }
+    }
+    if(!selected){
+      setModelType(null);
+    }
+  },[checkData])
+
+
+  function handleClick(){
+    if(showSelect){
+      let selected = false
+      for(let name in checkData){
+        if(checkData.hasOwnProperty(name) && checkData[name]){
+          selected = true;
+        }
+      }
+      console.log("selectd",selected)
+      if(selected){
+        setCreateTaskVisible(true);
+      }else {
+        message.info("请至少选择一个虚拟核")
+      }
+    }else {
+      setTitle("创建推理任务");
+      setShowSelect(true);
+    }
+  }
 
   return (
     <div className={classnames(styles.resourceOverview, 'boxShadow')}>
@@ -185,7 +240,16 @@ export default () => {
             title={
               <div className={styles.title}>
                 <span>资源总览</span>
-                <Button onClick={()=>setCreateTaskVisible(true)}>推理任务</Button>
+                <span>
+                  {
+                    showSelect && <Button className={styles.cancelSelect} onClick={()=>{
+                      setShowSelect(false);
+                      setCheckData({});
+                      setModelType(null);
+                    }}>取消</Button>
+                  }
+                  <Button onClick={handleClick}>{title}</Button>
+                </span>
               </div>
             }
           >
@@ -215,9 +279,10 @@ export default () => {
                           if(typeof status === "undefined"){
                             status = 1;
                           }
+                          const id = i.chip_name + "-" + i.vnpu_name;
                           return (
                               <div key={i.id} className={styles.calculationItem}>
-                                <div className={classnames(styles.left, i.disabled ? styles.leftDisabled : null)}>
+                                <div style={{background: statusConfig[status]?.value, color: 'black'}} className={classnames(styles.left, i.disabled ? styles.leftDisabled : null)}>
                                   <div className={styles.name}>
                                     虚拟核
                                     <span>({i.name})</span>
@@ -248,12 +313,12 @@ export default () => {
                                   </div>
                                   <div className={styles.rightContent}>
                                     <div className={styles.contentItem}>
-                                      <span className={styles.label}>CPU({i.memoryTotal}核)</span>
-                                      <div className={styles.value}>{i.cpuUsage || '--'}</div>
+                                      <span className={styles.label}>CPU({i.cpuTotal}核)</span>
+                                      {/*<div className={styles.value}>{i.cpuUsage || '--'}</div>*/}
                                     </div>
                                     <div className={styles.contentItem}>
-                                      <span className={styles.label}>内存({i.cpuTotal}MB)</span>
-                                      <div className={styles.value}>{i.memoryUsage || '--'}</div>
+                                      <span className={styles.label}>内存({i.memoryTotal}GB)</span>
+                                      {/*<div className={styles.value}>{i.memoryUsage || '--'}</div>*/}
                                     </div>
                                   </div>
                                   <div className={styles.footer}>
@@ -273,7 +338,7 @@ export default () => {
                                             {
                                               label: '停止模型',
                                               key: 1,
-                                              disabled: status !== 2
+                                              disabled: i.algorithm_type === -1 || !(status !== 0)
                                             },
                                             {
                                               label: '更换模型',
@@ -295,6 +360,23 @@ export default () => {
 
                                   </div>
                                 </div>
+                                {
+                                  showSelect && i.algorithm_type !== -1 && (modelType === null || (modelType != null && modelType === i.algorithm_type)) &&
+                                  <div
+                                      className={styles.selectCalcItem}
+                                      onClick={()=>{
+                                        if(!modelType){
+                                          setModelType(i.algorithm_type);
+                                        }
+                                        console.log(i.algorithm_type)
+                                        setCheckData(draft => {
+                                          draft[id] = !draft[id]
+                                        });
+                                      }}
+                                  >
+                                    <Checkbox checked={checkData[id]} className={styles.checkBox} />
+                                  </div>
+                                }
                               </div>
                           )
                         })
@@ -331,8 +413,12 @@ export default () => {
       }
       {
         createTaskVisible &&
-        <CreateTask visible={createTaskVisible} onClose={()=>{
-          setCreateTaskVisible(false)
+        <CreateTask modelType={modelTypeConfig[modelType]?.key} checkData={checkData} visible={createTaskVisible} onClose={(flag)=>{
+          setCreateTaskVisible(false);
+          if(flag){
+            setShowSelect(false);
+            setTitle("选择虚拟核");
+          }
         }}/>
       }
     </div>

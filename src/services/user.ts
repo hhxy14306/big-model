@@ -36,13 +36,13 @@ export function addUser(data){
 }
 export function updateUser(data){
     return request<any>(`/bigIntelligence/v1/user/update`, {
-        method: 'post',
+        method: 'put',
         data
     });
 }
 export function deleteUser(data){
     return request<any>(`/bigIntelligence/v1/user/delete`, {
-        method: 'post',
+        method: 'DELETE',
         data
     });
 }

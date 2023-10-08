@@ -83,9 +83,9 @@ export default function(props){
   });
 
   const query = useQuery<any, Error>(['getTaskList'], async ()=> {
-    console.log(searchParams,record)
+    console.log(1233,searchParams,record)
     const res = await getNodeDetail({
-      nodeName: record.name,
+      nodeName: record.chip_name + "-" + record.name,
       //...searchParams,
     });
     return res.taskList.map(item=>({

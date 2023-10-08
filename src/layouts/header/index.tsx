@@ -3,8 +3,8 @@ import { Link, Outlet, history, useModel,useLocation } from 'umi';
 import styles from './index.less';
 import { ReactComponent as LogoSvg} from '@/assets/logo.svg'
 import userIcon from '@/assets/userIcon.png'
-import {Badge, Menu} from 'antd';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import {Badge, Dropdown, Menu, message, Space} from 'antd';
+import {AppstoreOutlined, DownOutlined, MailOutlined, SettingOutlined} from '@ant-design/icons';
 import {MenuProps} from "antd/es/menu";
 import { ReactComponent as InferIcon } from '@/assets/menuIcon/inferIcon.svg';
 import { ReactComponent as ResourceIcon } from '@/assets/menuIcon/resourceIcon.svg';
@@ -15,6 +15,7 @@ import router from '../../../config/router'
 import {IconMap} from "@/components/MenuIcon";
 import{wrapPromise} from '@/utils';
 import {getLog} from "@/services/log";
+import {logOut} from "@/services";
 
 const { global_config } = window as any
 
@@ -57,6 +58,14 @@ export default function Header(props) {
 
   const menuData = [];
 
+  const items: MenuProps['items'] = [
+    {
+      key: 'logout',
+      //danger: true,
+      label: '退出登录',
+    },
+  ];
+
   router.forEach((item:any)=>{
     if(item.path==="/warehouse" && !global_config.showWarehouse){
       item.hideInMenu = true
@@ -86,6 +95,20 @@ export default function Header(props) {
     setCurrent(e.key);
     history.push(e.key);
   };
+  const handleMenuClick: MenuProps['onClick'] =async (e) => {
+    console.log('click', e);
+    if(e.key === 'logout'){
+      const res = await logOut();
+      console.log(res)
+      if(res.success){
+        message.success("退出成功！").then(res=>{
+          history.push("/login")
+        });
+      }else{
+        message.error("退出失败！")
+      }
+    }
+  };
   return (
     <div className={styles.headerLayout}>
       <div className={styles.leftArea}>
@@ -96,7 +119,9 @@ export default function Header(props) {
         <Menu theme="dark" onClick={onClick} selectedKeys={[current]} mode="horizontal" items={menuData} />
       </div>
       <div className={styles.rightArea}>
-        <img width={28} src={userIcon} alt=""/>
+        <Dropdown menu={{ items, onClick: handleMenuClick, }} trigger={['click']}>
+          <img onClick={(e) => e.preventDefault()} width={28} src={userIcon} alt=""/>
+        </Dropdown>
         <span className={styles.username}>{username}</span>
       </div>
     </div>

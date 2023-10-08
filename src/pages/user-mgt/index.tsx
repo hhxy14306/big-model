@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styles from './index.less'
 import classnames from "classnames";
-import {Button, Input, Select, Spin, Table} from "antd";
+import {Button, Divider, Input, message, Modal, Select, Spin, Table} from "antd";
 import CreateUpdateUser from './create-update-user'
 import {useQuery} from "umi";
 import {getUserList, deleteUser} from "@/services/user";
@@ -18,6 +18,37 @@ export default function (props) {
       key: 'user_name',
       align: 'center',
       ellipsis: true,
+    },
+    {
+      title: '操作',
+      dataIndex: 'operate',
+      key: 'operate',
+      align: 'center',
+      width: '1.6rem',
+      render:(_,row)=>{
+        return (
+            <>
+              <a onClick={()=>{
+                setVisible(true);
+                setRecord(row);
+              }}>修改密码</a>
+              <Divider type="vertical"/>
+              <a onClick={()=>{
+                Modal.confirm({
+                  title: `确认删除${row.user_name}?`,
+                  onOk: async ()=>{
+                      const res = await deleteUser({names: [row.user_name]});
+                      if(res.success){
+                        message.success("删除成功！")
+                      }else {
+                        message.error("删除失败！")
+                      }
+                  }
+                })
+              }}>删除</a>
+            </>
+        )
+      }
     },
   ];
   const [pagination, setPagination]=useImmer({

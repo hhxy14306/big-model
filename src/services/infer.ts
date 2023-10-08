@@ -176,39 +176,39 @@ export function getTasks(params?:any){
 }
 
 export function getAverageTreatment(params?:any){
-  if(global_config.localData){
-    return new Promise<AxiosResponse<T>>(resolve => {
-      setTimeout(()=>{
-        resolve({
-              "change": [],
-              "recognize": [],
-              "segmentation": [
-                {
-                  "num": 10.654,
-                  "time": "2023-09-26 16"
-                },
-                {
-                  "num": 0.005,
-                  "time": "2023-09-26 17"
-                },
-                {
-                  "num": 0.001,
-                  "time": "2023-09-26 18"
-                },
-                {
-                  "num": 18000.005,
-                  "time": "2023-09-27 11"
-                },
-                {
-                  "num": 0.007,
-                  "time": "2023-09-27 20"
-                }
-              ],
-              "sort": []
-            })
-      },100)
-    })
-  }
+  // if(global_config.localData){
+  //   return new Promise<AxiosResponse<T>>(resolve => {
+  //     setTimeout(()=>{
+  //       resolve({
+  //             "change": [],
+  //             "recognize": [],
+  //             "segmentation": [
+  //               {
+  //                 "num": 10.654,
+  //                 "time": "2023-09-26 16"
+  //               },
+  //               {
+  //                 "num": 0.005,
+  //                 "time": "2023-09-26 17"
+  //               },
+  //               {
+  //                 "num": 0.001,
+  //                 "time": "2023-09-26 18"
+  //               },
+  //               {
+  //                 "num": 18000.005,
+  //                 "time": "2023-09-27 11"
+  //               },
+  //               {
+  //                 "num": 0.007,
+  //                 "time": "2023-09-27 20"
+  //               }
+  //             ],
+  //             "sort": []
+  //           })
+  //     },100)
+  //   })
+  // }
   return request<any>(`/bigIntelligence/v1/getAverageTreatment`, {
     method: 'GET',
     params
@@ -241,7 +241,7 @@ export function getResourceUsage(params?:any){
                     "values": [
                       {
                         time: 1695506124,
-                        usage: "39.18333333333333"
+                        usage: "60"
                       },
                       {
                         time: 1695506124,
@@ -254,7 +254,7 @@ export function getResourceUsage(params?:any){
                     "values": [
                       {
                         time: 1695506124,
-                        usage: "39.18333333333333"
+                        usage: "80"
                       },
                     ]
                   },
@@ -280,7 +280,7 @@ export function getResourceUsage(params?:any){
 }
 
 export function createInfer(data:any){
-  return request<any>(`/bigIntelligence/v1/getNodeTaskMsg`, {
+  return request<any>(`/bigIntelligence/v1/bigModelInterface`, {
     method: 'post',
     data
   });

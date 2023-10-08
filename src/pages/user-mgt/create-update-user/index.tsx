@@ -7,30 +7,40 @@ import SelectFolderPath from '@/components/select-folder-path'
 import {addUser, updateUser} from "@/services/user";
 
 export default function(props){
-  const { visible, onClose } = props;
-  const [machineList, setMachineList] = useState([]);
+  const { visible, onClose, record} = props;
   const { initialState } = useModel('@@initialState');
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [form] = Form.useForm();
 
   const title = useMemo(()=> JSON.stringify(props.record) === "{}" ? '添加用户' : '修改用户',[props.record]);
 
+  const isEdit = useMemo(()=> JSON.stringify(props.record) !== "{}",[props.record]);
+
+  useEffect(()=>{
+    form.setFieldsValue(record)
+  },[record])
+
   async function handleOk(){
     setConfirmLoading(true)
-    const values = await form.validateFields();
-    console.log(values);
-    const res = await addUser({
-      ...values,
-     // nodeList: JSON.stringify(values.nodeList),
-      userName: initialState.name
-      }
-    )
+    try{
+      const values = await form.validateFields();
+      console.log(values);
+      const method = isEdit ? updateUser : addUser;
+      const res = await method({
+            ...values,
+            // nodeList: JSON.stringify(values.nodeList),
+            userName: initialState.name
+          }
+      )
 
-    if(res.code === "200" ){
-      message.success("创建成功！")
-      onClose()
-    }else {
-      message.error("创建失败！")
+      if(res.code === "200" ){
+        message.success("创建成功！")
+        onClose()
+      }else {
+        message.error("创建失败！")
+      }
+    }catch (e) {
+
     }
     setConfirmLoading(false)
   }
@@ -47,10 +57,6 @@ export default function(props){
     }
   },[visible]);
 
-
-  const machineData = useMemo(()=>{
-    return machineList
-  },[machineList])
 
   return (
     <Modal
@@ -73,10 +79,10 @@ export default function(props){
         layout="horizontal"
         style={{ maxWidth: 600 }}
       >
-        <Form.Item label="用户名" name="user_name">
-          <Input placeholder='请输入用户名'/>
+        <Form.Item label="用户名" name="user_name" rules={[{ required: true, message: '请输入用户名!' }]}>
+          <Input disabled={isEdit} placeholder='请输入用户名'/>
         </Form.Item>
-        <Form.Item label="密码" name="user_pass">
+        <Form.Item label="密码" name="user_pass" rules={[{ required: true, message: '请输入用户密码!' }]}>
           <Input.Password placeholder='请输入密码'/>
         </Form.Item>
       </Form>

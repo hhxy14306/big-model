@@ -8,7 +8,7 @@ const { global_config } = window as any
 const service = axios.create({
   baseURL: global_config.BASE_URL, // url = common-layout url + request url
   // withCredentials: true, // send cookies when cross-domain requests
-  //timeout: 1000 * 5, // request timeout
+  timeout: 1000 * 5, // request timeout
   headers: {
     'Content-Type': 'application/json;'
   }
