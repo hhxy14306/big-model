@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useImmer } from 'use-immer';
 import styles from './index.less';
 import { Badge, Checkbox, Input, Table } from 'antd';
@@ -28,19 +28,19 @@ export default function(props){
           align: 'center'
       },
       {
-          title: '待处理数据路径',
-          dataIndex: 'url',
-          key: 'url',
+          title: '遥感数据路径',
+          dataIndex: 'folder',
+          key: 'folder',
       },
       {
           title: '提交人',
-          dataIndex: 'submitPerson',
-          key: 'submitPerson',
+          dataIndex: 'userName',
+          key: 'userName',
       },
       {
           title: '提交时间',
-          dataIndex: 'time',
-          key: 'time',
+          dataIndex: 'cretetime',
+          key: 'cretetime',
           align: 'center'
       },
       {
@@ -48,7 +48,16 @@ export default function(props){
           dataIndex: 'status',
           key: 'status',
           align: 'center',
-          render: text=><Badge status={['default','processing','success'][text]} text={['排队中','处理中','已处理'][text]} />
+          render: text=> {
+              // 0计算失败 1计算成功 2 计算中 3计算等待
+              const data = [
+                  {label: '计算失败', value: 'error'},
+                  {label: '计算成功', value: 'success'},
+                  {label: '计算中', value: 'processing'},
+                  {label: '计算等待', value: 'warning'}
+              ];
+              return <Badge status={data[text]?.value} text={data[text]?.label} />
+          }
       },
       {
           title: '操作',
@@ -79,13 +88,15 @@ export default function(props){
       },
   ];
   const [searchParams, setSearchParams] = useImmer<any>({
-    status: [1,2]
+    status: [0,1,2]
   });
 
-  const query = useQuery<any, Error>(['getTaskList'], async ()=> {
+  const nodeName = useMemo(()=>record.chip_name + "-" + record.name,[record])
+
+  const query = useQuery<any, Error>(['getTaskList',nodeName], async ()=> {
     console.log(1233,searchParams,record)
     const res = await getNodeDetail({
-      nodeName: record.chip_name + "-" + record.name,
+      nodeName,
       //...searchParams,
     });
     return res.taskList.map(item=>({
@@ -145,14 +156,8 @@ export default function(props){
         <Table
           rowKey="index"
           border={false}
-          // dataSource={data}
-          dataSource={[
-              {
-                  id:1,
-                  index: 1
-              }
-          ]}
-          //loading={isLoading}
+          dataSource={data}
+          loading={isLoading}
           columns={columns} />
         {
             showLog.visible &&

@@ -58,32 +58,30 @@ export default () => {
   const chartsConfigList = [
     {
       key: 'inferRequest',
-      name: '推理请求',
+      name: '推理请求（个）',
       onChange: (e)=>{
         setSearchParams(draft => {
           draft.params1 = e.target.value;
         })
-        getTasksData().then();
       }
     },
     {
       key: 'dealTime',
-      name: '遥感数据平均处理时间',
+      name: '遥感数据平均处理时间（秒）',
       onChange: (e)=>{
+        console.log( e.target.value)
         setSearchParams(draft => {
           draft.params2 = e.target.value;
         });
-        getAverageTreatmentData().then()
       }
     },
     {
       key: 'resourceUsageRate',
-      name: '一体机资源使用率',
+      name: '一体机资源使用率（%）',
       onChange: (e)=>{
         setSearchParams(draft => {
           draft.params3 = e.target.value;
         });
-        getResourceUsageData().then();
       }
     },
   ];
@@ -98,9 +96,13 @@ export default () => {
       seriesField: 'name',
       xAxis: {
         // type: 'timeCat',
-        tickCount: 5,
+        tickCount: 100,
+        tickInterval: 1
       },
       yAxis: {
+        label: {
+          //formatter: (v) => `${v}个`
+        },
         //tickInterval: 10
       },
       scrollbar:{
@@ -128,7 +130,11 @@ export default () => {
         // type: 'timeCat',
         //tickCount: 5,
       },
-      yAxis:{},
+      yAxis:{
+        label: {
+          //formatter: (v) => `${v}分钟`
+        },
+      },
       scrollbar:{
         x: {}
       },
@@ -148,21 +154,17 @@ export default () => {
       title: '123',
       padding: 'auto',
       xField: 'time',
-      yField: 'usage',
+      yField: 'num',
       seriesField: 'name',
       xAxis: {
-       // type: 'time',
-        tickLine:{
-          alignTick: true
-        }
+        // type: 'timeCat',
+        tickCount: 5,
       },
       yAxis: {
-        // label: {
-        //   // 数值格式化为千分位
-        //   formatter: (v) => `${v}`.replace(/\d{1,3}(?=(\d{3})+$)/g, (s) => `${s},`),
-        // },
-        // tickInterval: 10,
-        // tickMethod: ()=>[0, 25, 50, 75, 100]
+        label: {
+          //formatter: (v) => `${v}%`
+        },
+        //tickInterval: 10
       },
       scrollbar:{
         x: {}
@@ -182,7 +184,19 @@ export default () => {
 
   useEffect(()=>{
     Promise.all([getTasksData(),getAverageTreatmentData(),getResourceUsageData()]).then(()=>{});
-  },[])
+  },[]);
+
+  useEffect(()=>{
+    getTasksData().then();
+  },[searchParams.params1])
+
+  useEffect(()=>{
+    getAverageTreatmentData().then();
+  },[searchParams.params2])
+
+  useEffect(()=>{
+    getResourceUsageData().then();
+  },[searchParams.params3])
 
   async function getTasksData(){
     const params = getParams(searchParams.params1)
@@ -196,44 +210,93 @@ export default () => {
       const res = await getTasks(params);
       let total = 0;
       const data = [];
-      if(!res.segmentation || res.segmentation.length === 0){
-        data.push({name: '分割', num: 0})
-      }else {
-        res.segmentation.forEach(item=>{
-          data.push({...item, name: '分割'});
-          total += item.num;
-        });
-      }
-      if(!res.sort || res.sort.length === 0){
-        data.push({name: '分类', num: 0})
-      }else {
-        res.sort.forEach(item=>{
-          data.push({...item, name: '分类'});
-          total += item.num;
-        });
-      }
-      if(!res.recognize || res.sort.length === 0){
-        data.push({name: '识别', num: 0})
-      }else {
-        res.recognize.forEach(item=>{
-          data.push({...item, name: '识别'});
-          total += item.num;
-        });
-      }
-      if(!res.change || res.sort.length === 0){
-        data.push({name: '变化', num: 0})
-      }else {
-        res.change.forEach(item=>{
-          data.push({...item, name: '变化'});
-          total += item.num;
-        });
-      }
-      setChartsConfig(draft => {
-        if(total === 0){
-          draft.inferRequest.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+
+      //---临时添加
+      const currentDay = dayjs(new Date()).format("YYYY-MM-DD");
+      const xData = new Map();
+      const modelList = ['分割', '分类', '识别', '变化'];
+      modelList.forEach(name=>{
+        const tempMap = new Map();
+        for(let i=1;i<24;i++){
+          const time = currentDay + ( i>=10 ? ` ${i}` : ` 0${i}`);
+          tempMap.set(time,{name, time, num: 0})
         }
-        draft.inferRequest.data = data;
+        xData.set(name, tempMap);
+      })
+
+      console.log("currentDate",xData)
+
+      res.segmentation.forEach(item=>{
+        const tempMap: Map<string,any> = xData.get("分割");
+        tempMap.set(item.time, {...item, name: '分割'})
       });
+      res.sort.forEach(item=>{
+        const tempMap: Map<string,any> = xData.get("分类");
+        tempMap.set(item.time, {...item, name: '分类'});
+      });
+      res.recognize.forEach(item=>{
+        const tempMap: Map<string,any> = xData.get("识别");
+        tempMap.set(item.time, {...item, name: '识别'});
+      });
+      res.change.forEach(item=>{
+        const tempMap: Map<string,any> = xData.get("变化");
+        tempMap.set(item.time, {...item, name: '变化'});
+      });
+
+      const data2 = [];
+      xData.forEach((values, key)=>{
+        values.forEach((item,k)=>{
+          data2.push(item)
+        })
+      });
+      console.log("ffffff",data2)
+      setChartsConfig(draft => {
+        // if(total === 0){
+        //   draft.inferRequest.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+        // }
+        draft.inferRequest.data = data2;
+      });
+
+      // ---
+
+      // if(!res.segmentation || res.segmentation.length === 0){
+      //   data.push({name: '分割', num: 0})
+      // }else {
+      //   res.segmentation.forEach(item=>{
+      //     data.push({...item, name: '分割'});
+      //     total += item.num;
+      //   });
+      // }
+      // if(!res.sort || res.sort.length === 0){
+      //   data.push({name: '分类', num: 0})
+      // }else {
+      //   res.sort.forEach(item=>{
+      //     data.push({...item, name: '分类'});
+      //     total += item.num;
+      //   });
+      // }
+      // if(!res.recognize || res.sort.length === 0){
+      //   data.push({name: '识别', num: 0})
+      // }else {
+      //   res.recognize.forEach(item=>{
+      //     data.push({...item, name: '识别'});
+      //     total += item.num;
+      //   });
+      // }
+      // if(!res.change || res.sort.length === 0){
+      //   data.push({name: '变化', num: 0})
+      // }else {
+      //   res.change.forEach(item=>{
+      //     data.push({...item, name: '变化'});
+      //     total += item.num;
+      //   });
+      // }
+      // setChartsConfig(draft => {
+      //   if(total === 0){
+      //     draft.inferRequest.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+      //   }
+      //   draft.inferRequest.data = data;
+      // });
     }catch (e) {
       setChartsConfig(draft => {
         draft.inferRequest.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
@@ -248,7 +311,30 @@ export default () => {
     })
   }
 
+  function onAverageTreatmentNoData(){
+    const timeList = getAxis(searchParams.params2);
+    const nameList = ['分割', '分类', '识别', '变化'];
+    const data = [];
+    timeList.forEach(time=>{
+      nameList.forEach(name=>{
+        data.push({name, time});
+      })
+    });
+    [0, 20, 40, 60, 80, 100].forEach(usage=>{
+      nameList.forEach(name=>{
+        data.push({name, usage, time: timeList});
+      })
+    })
+    setChartsConfig(draft => {
+      draft.dealTime.data = data;
+      draft.dealTime.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+    });
+    setNoDate(draft => {
+      draft.dealTime = true;
+    })
+  }
   async function getAverageTreatmentData(){
+    console.log(searchParams.params2)
     const params = getParams(searchParams.params2)
     setNoDate(draft => {
       draft.dealTime = false;
@@ -260,55 +346,125 @@ export default () => {
       const res = await getAverageTreatment(params);
       let total = 0;
       const data = [];
-      if(!res.segmentation || res.segmentation.length === 0){
-        data.push({name: '分割', num: 0})
-      }else {
-        res.segmentation.forEach(item=>{
-          data.push({...item, name: '分割'});
-          total += item.num;
-        });
-      }
-      if(!res.sort || res.sort.length === 0){
-        data.push({name: '分类', num: 0})
-      }else {
-        res.sort.forEach(item=>{
-          data.push({...item, name: '分类'});
-          total += item.num;
-        });
-      }
-      if(!res.recognize || res.sort.length === 0){
-        data.push({name: '识别', num: 0})
-      }else {
-        res.recognize.forEach(item=>{
-          data.push({...item, name: '识别'});
-          total += item.num;
-        });
-      }
-      if(!res.change || res.sort.length === 0){
-        data.push({name: '变化', num: 0})
-      }else {
-        res.change.forEach(item=>{
-          data.push({...item, name: '变化'});
-          total += item.num;
-        });
-      }
-      setChartsConfig(draft => {
-        if(total === 0){
-          draft.dealTime.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+
+      //---临时添加
+      const currentDay = dayjs(new Date()).format("YYYY-MM-DD");
+      const xData = new Map();
+      const modelList = ['分割', '分类', '识别', '变化'];
+      modelList.forEach(name=>{
+        const tempMap = new Map();
+        for(let i=1;i<24;i++){
+          const time = currentDay + ( i>=10 ? ` ${i}` : ` 0${i}`);
+          tempMap.set(time,{name, time, num: 0})
         }
-        draft.dealTime.data = data;
-      });
-    }catch (e) {
-      setChartsConfig(draft => {
-        draft.dealTime.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
-      });
-      setNoDate(draft => {
-        draft.dealTime = true;
+        xData.set(name, tempMap);
       })
+
+      console.log("currentDate",xData)
+
+      res.segmentation.forEach(item=>{
+        const tempMap: Map<string,any> = xData.get("分割");
+        tempMap.set(item.time, {...item, name: '分割'})
+      });
+      res.sort.forEach(item=>{
+        const tempMap: Map<string,any> = xData.get("分类");
+        tempMap.set(item.time, {...item, name: '分类'});
+      });
+      res.recognize.forEach(item=>{
+        const tempMap: Map<string,any> = xData.get("识别");
+        tempMap.set(item.time, {...item, name: '识别'});
+      });
+      res.change.forEach(item=>{
+        const tempMap: Map<string,any> = xData.get("变化");
+        tempMap.set(item.time, {...item, name: '变化'});
+      });
+
+      const data2 = [];
+      xData.forEach((values, key)=>{
+        values.forEach((item,k)=>{
+          data2.push(item)
+        })
+      });
+      console.log("ffffff",data2)
+      setChartsConfig(draft => {
+        // if(total === 0){
+        //   draft.inferRequest.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+        // }
+        draft.dealTime.data = data2;
+      });
+
+      // ---
+
+
+
+
+      // if(!res.segmentation || res.segmentation.length === 0){
+      //   data.push({name: '分割', num: 0})
+      // }else {
+      //   res.segmentation.forEach(item=>{
+      //     data.push({...item, name: '分割'});
+      //     total += item.num;
+      //   });
+      // }
+      // if(!res.sort || res.sort.length === 0){
+      //   data.push({name: '分类', num: 0})
+      // }else {
+      //   res.sort.forEach(item=>{
+      //     data.push({...item, name: '分类'});
+      //     total += item.num;
+      //   });
+      // }
+      // if(!res.recognize || res.sort.length === 0){
+      //   data.push({name: '识别', num: 0})
+      // }else {
+      //   res.recognize.forEach(item=>{
+      //     data.push({...item, name: '识别'});
+      //     total += item.num;
+      //   });
+      // }
+      // if(!res.change || res.sort.length === 0){
+      //   data.push({name: '变化', num: 0})
+      // }else {
+      //   res.change.forEach(item=>{
+      //     data.push({...item, name: '变化'});
+      //     total += item.num;
+      //   });
+      // }
+      // setChartsConfig(draft => {
+      //   if(total === 0){
+      //     draft.dealTime.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+      //   }
+      //   draft.dealTime.data = data;
+      // });
+    }catch (e) {
+      onAverageTreatmentNoData();
     }
     setLoading(draft => {
       draft.dealTime = false;
     });
+  }
+
+  function onResourceUsageDataNoData(){
+    const timeList = getAxis(searchParams.params3);
+    const nameList = ['内存用量（%）', '磁盘用量详情（%）', 'CPU用量（%）'];
+    const data = [];
+    timeList.forEach(time=>{
+      nameList.forEach(name=>{
+        data.push({name, time});
+      })
+    });
+    [0, 20, 40, 60, 80, 100].forEach(usage=>{
+      nameList.forEach(name=>{
+        data.push({name, usage, time: timeList});
+      })
+    })
+    setChartsConfig(draft => {
+      draft.resourceUsageRate.data = data;
+      draft.resourceUsageRate.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+    });
+    setNoDate(draft => {
+      draft.resourceUsageRate = true;
+    })
   }
 
   async function getResourceUsageData(){
@@ -319,7 +475,7 @@ export default () => {
     });
     setNoDate(draft => {
       draft.resourceUsageRate = false;
-    })
+    });
     try {
       const res = await getResourceUsage(params);
       const data = [];
@@ -339,32 +495,16 @@ export default () => {
       }
       setChartsConfig(draft => {
         draft.resourceUsageRate.data = data;
+        draft.resourceUsageRate.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
         if(total === 0){
-          draft.resourceUsageRate.yAxis.tickMethod = ()=>["0", "25", "50", "75", "100"];
+          draft.resourceUsageRate.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+        }
+        if(data.length === 0){
+          onResourceUsageDataNoData()
         }
       });
     }catch (e) {
-      const timeList = getAxis(searchParams.params1);
-      const nameList = ['内存用量（%）', '磁盘用量详情（%）', 'CPU用量（%）'];
-      const data = [];
-      timeList.forEach(time=>{
-        nameList.forEach(name=>{
-          data.push({name, time});
-        })
-      });
-
-      // ["0", "25", "50", "75", "100"].forEach(usage=>{
-      //   nameList.forEach(name=>{
-      //     data.push({name, usage, time: timeList});
-      //   })
-      // })
-      setChartsConfig(draft => {
-        draft.resourceUsageRate.data = data;
-        draft.resourceUsageRate.yAxis.tickMethod = ()=>["0", "25", "50", "75", "100"];
-      });
-      setNoDate(draft => {
-        draft.resourceUsageRate = true;
-      })
+      onResourceUsageDataNoData()
     }
     setLoading(draft => {
       draft.resourceUsageRate = false;
@@ -382,12 +522,12 @@ export default () => {
                   <div key={item.key} className={styles.contentItem}>
                     <div className={styles.contentItemHeader}>
                       <span className={styles.chartsName}>{item.name}</span>
-                      <Radio.Group defaultValue={1} onChange={item.onChange}>
-                        <Radio.Button value={1}>1小时</Radio.Button>
-                        <Radio.Button value={2}>2小时</Radio.Button>
-                        <Radio.Button value={4}>4小时</Radio.Button>
-                        <Radio.Button value={8}>8小时</Radio.Button>
-                      </Radio.Group>
+                      {/*<Radio.Group defaultValue={1} onChange={item.onChange}>*/}
+                      {/*  <Radio.Button value={1}>1小时</Radio.Button>*/}
+                      {/*  <Radio.Button value={2}>2小时</Radio.Button>*/}
+                      {/*  <Radio.Button value={4}>4小时</Radio.Button>*/}
+                      {/*  <Radio.Button value={8}>8小时</Radio.Button>*/}
+                      {/*</Radio.Group>*/}
                     </div>
                     {
                       loading[item.key] ?

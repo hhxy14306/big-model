@@ -21,23 +21,26 @@ export default () => {
   const chainInfo=[
     {
       key: 'chip_status', label: '芯片状态',
-      render: val=>val
+      render: val=> val === 'OK' ? '正常' : '异常'
     },
     {
       key: 'chip_power', label: '功率',
-      render: val => val ? val + 'mW' : '-'
+      render: val => val ? val + ' mW' : '-'
     },
     {
       key: 'chip_temperature', label: '温度',
-      render: val => val ? val + '°C' : '-'
+      render: val => val ? val + ' °C' : '-'
     },
     {
-      key: 'chip_aicore', label: 'AI核心',
-      render: val => val ? val + 'core' : '-'
+      key: 'chip_aicore', label: 'AICore',
+      render: (val,data) => {
+        console.log(data)
+        return val ? `1 / ${val}` : '-'
+      }
     },
     {
       key: 'chip_memory', label: '内存',
-      render: val => val ? val + 'GB' : '-'
+      render: val => val ? `1 / ${val} MB` : '-'
     },
   ]
 
@@ -52,22 +55,26 @@ export default () => {
   const statusConfig = {
     0: {
       value: 'default',
+      bgColor: 'rgba(0, 0, 0, 0.25)',
       label: '异常',
       desc: '发生故障或状态未知，不允许对不可用的虚拟核做任何操作'
     },
-    1: {
+    2: {
       value: 'lime',
       label: '空闲',
+      bgColor: '#a0d911',
       desc: '虚拟核状态正常，但未调度任何模型在其上运行'
     },
-    2: {
+    1: {
       value: 'success',
+      bgColor: '#52c41a',
       label: '就绪',
       desc: '虚拟核状态正常，已调度模型在其上运行，且模型运行状态正常，此时虚拟核已具备处理遥感数据的能力'
     },
     3: {
-      value: 'orange',
-      label: '繁忙',
+      value: 'processing',
+      bgColor: '#1677ff',
+      label: '推理中',
       desc: '虚拟核上模型运行状态正常，且正在处理遥感数据'
     },
   };
@@ -130,7 +137,6 @@ export default () => {
   async function getNodeStatusData(){
     const res = await getNodeStatus();
     try {
-      console.log(res)
       res?.map(item=>{
         relationMap.current.set(item.nodeName, item)
       })
@@ -155,6 +161,8 @@ export default () => {
           title: `${modelTypeConfig[item.algorithm_type]?.label}（实例ID：${item.vnpu_name}）正在 ${item.chip_name}上运行，确认停止？`,
           onOk: (close)=>{
               updateInfer({
+                //operate_type: 0停止,1启动,2更换
+                operate_type: 0,
                 chip_tag: item.chip_name,
                 vnpu_tag: item.name,
               }).then(res=>{
@@ -183,7 +191,6 @@ export default () => {
   };
 
   const {isLoading, isError, data, refetch } = query;
-  console.log("relationMap",relationMap);
 
   useEffect(()=>{
     getNodeStatusData().then();
@@ -195,7 +202,6 @@ export default () => {
   },[]);
 
   useEffect(()=>{
-    console.log(checkData)
     let selected = false
     for(let name in checkData){
       if(checkData.hasOwnProperty(name) && checkData[name]){
@@ -216,7 +222,6 @@ export default () => {
           selected = true;
         }
       }
-      console.log("selectd",selected)
       if(selected){
         setCreateTaskVisible(true);
       }else {
@@ -265,7 +270,7 @@ export default () => {
                             return (
                                 <Col key={chainInfoItem.key} span={3}>
                                   <span>{chainInfoItem.label}:</span>
-                                  <span className={styles.chainInfoItemValue}>{chainInfoItem.render(item[chainInfoItem.key])}</span>
+                                  <span className={styles.chainInfoItemValue}>{chainInfoItem.render ? chainInfoItem.render(item[chainInfoItem.key], item) : item[chainInfoItem.key]}</span>
                                 </Col>
                           )})
                         }
@@ -277,12 +282,12 @@ export default () => {
                         item?.children.map(i=>{
                           let status = relationMap.current.get(item.name +"-"+i.name)?.nodeStatus;
                           if(typeof status === "undefined"){
-                            status = 1;
+                            status = 2;
                           }
                           const id = i.chip_name + "-" + i.vnpu_name;
                           return (
                               <div key={i.id} className={styles.calculationItem}>
-                                <div style={{background: statusConfig[status]?.value, color: 'black'}} className={classnames(styles.left, i.disabled ? styles.leftDisabled : null)}>
+                                <div style={{background: statusConfig[status]?.bgColor, color: 'black'}} className={classnames(styles.left, i.disabled ? styles.leftDisabled : null)}>
                                   <div className={styles.name}>
                                     虚拟核
                                     <span>({i.name})</span>
@@ -313,12 +318,12 @@ export default () => {
                                   </div>
                                   <div className={styles.rightContent}>
                                     <div className={styles.contentItem}>
-                                      <span className={styles.label}>CPU({i.cpuTotal}核)</span>
-                                      {/*<div className={styles.value}>{i.cpuUsage || '--'}</div>*/}
+                                      <span className={styles.label}>AICore</span>
+                                      <div className={styles.value}>{i.cpuTotal || '--'}</div>
                                     </div>
                                     <div className={styles.contentItem}>
-                                      <span className={styles.label}>内存({i.memoryTotal}GB)</span>
-                                      {/*<div className={styles.value}>{i.memoryUsage || '--'}</div>*/}
+                                      <span className={styles.label}>内存</span>
+                                      <div className={styles.value}>{i.memoryTotal|| '--'} MB </div>
                                     </div>
                                   </div>
                                   <div className={styles.footer}>
@@ -331,29 +336,33 @@ export default () => {
                                         menu={{
                                           items: [
                                             {
-                                              label: '启动模型',
+                                              /**
+                                               * 1就绪，2空闲，3推理中
+                                               * 空闲时只允许启动
+                                               * 就绪时，允许停止和更换；
+                                               * 推理中时，不允许所有操作
+                                               * */
+                                              label: '启动', //
                                               key: 0,
-                                              disabled: status !== 1
+                                              disabled: ![2].includes(status)
                                             },
                                             {
-                                              label: '停止模型',
+                                              label: '停止',
                                               key: 1,
-                                              disabled: i.algorithm_type === -1 || !(status !== 0)
+                                              disabled: ![1].includes(status)
+                                              //disabled: i.algorithm_type === -1 || !(status !== 0)
                                             },
                                             {
-                                              label: '更换模型',
+                                              label: '更换',
                                               key: 2,
-                                              disabled: status !== 1 && status !== 2
-                                              //danger: true,
+                                              disabled: ![1].includes(status)
                                             },
                                           ],
                                           onClick: (e)=> handleMenuClick(e.key, i)
                                         }}
                                     >
                                       <Button>
-                                        <Space>
-                                          操作
-                                          <DownOutlined />
+                                        <Space>模型操作<DownOutlined />
                                         </Space>
                                       </Button>
                                     </Dropdown>
@@ -368,7 +377,6 @@ export default () => {
                                         if(!modelType){
                                           setModelType(i.algorithm_type);
                                         }
-                                        console.log(i.algorithm_type)
                                         setCheckData(draft => {
                                           draft[id] = !draft[id]
                                         });

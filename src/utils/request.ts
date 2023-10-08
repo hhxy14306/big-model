@@ -5,6 +5,8 @@ import { message, Modal } from 'antd'
 
 const { global_config } = window as any
 
+let unLoginTipCount = 0;
+
 const service = axios.create({
   baseURL: global_config.BASE_URL, // url = common-layout url + request url
   // withCredentials: true, // send cookies when cross-domain requests
@@ -58,15 +60,20 @@ service.interceptors.response.use(
         return res;
       case 500:
         return message.error(res.message || 'Error')
-      case "0000001":
-        return Modal.error({
-          title: '登录失效',
-          content: '请重新登录！',
-          onOk() {
-              window.location.hash = '/login'
-          }
-        })
-      case 2001:
+      case "401":
+        if(unLoginTipCount++ === 0){
+          return Modal.error({
+            title: '登录失效',
+            content: '请重新登录！',
+            onOk() {
+              unLoginTipCount = 0;
+              window.location.hash = '/login';
+            }
+          })
+        }else {
+          return res;
+        }
+      case 2001: break;
 
     }
   },

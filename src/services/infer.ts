@@ -109,13 +109,13 @@ export function getNodeStatus(){
           },
           {
             "nodeName": "Ascend 310P3-vdavinci101",
-            "nodeStatus": 1,
+            "nodeStatus": 2,
             "runTaskNum": 0,
             "waitTaskNum": 0
           },
           {
             "nodeName": "Ascend 310P3-vdavinci102",
-            "nodeStatus": 1,
+            "nodeStatus": 3,
             "runTaskNum": 0,
             "waitTaskNum": 0
           }
@@ -135,6 +135,31 @@ export function getNodeDetail(params){
   });
 }
 
+export function getFolder(params?: any){
+  console.log(params)
+  if(global_config.localData){
+    return new Promise<AxiosResponse<T>>(resolve => {
+      setTimeout(()=>{
+        resolve({
+          "data": [
+            "usr",
+            "data",
+            "opt",
+            "test",
+            "router",
+            "vendor"
+          ],
+          "success": true
+        })
+      },100)
+    })
+  }
+  return request<any>(`/bigIntelligence/v1/system/ListDirectory`, {
+    method: 'GET',
+    params
+  });
+}
+
 export function getTasks(params?:any){
   if(global_config.localData){
     return new Promise<AxiosResponse<T>>(resolve => {
@@ -145,23 +170,23 @@ export function getTasks(params?:any){
           "segmentation": [
             {
               "num": 30,
-              "time": "2023-09-26 16"
+              "time": "2023-10-08 16"
             },
             {
               "num": 1,
-              "time": "2023-09-26 17"
+              "time": "2023-10-08 17"
             },
             {
               "num": 1,
-              "time": "2023-09-26 18"
+              "time": "2023-10-08 18"
             },
             {
               "num": 1,
-              "time": "2023-09-27 11"
+              "time": "2023-10-08 11"
             },
             {
               "num": 2,
-              "time": "2023-09-27 20"
+              "time": "2023-10-08 20"
             }
           ],
           "sort": []
@@ -176,39 +201,39 @@ export function getTasks(params?:any){
 }
 
 export function getAverageTreatment(params?:any){
-  // if(global_config.localData){
-  //   return new Promise<AxiosResponse<T>>(resolve => {
-  //     setTimeout(()=>{
-  //       resolve({
-  //             "change": [],
-  //             "recognize": [],
-  //             "segmentation": [
-  //               {
-  //                 "num": 10.654,
-  //                 "time": "2023-09-26 16"
-  //               },
-  //               {
-  //                 "num": 0.005,
-  //                 "time": "2023-09-26 17"
-  //               },
-  //               {
-  //                 "num": 0.001,
-  //                 "time": "2023-09-26 18"
-  //               },
-  //               {
-  //                 "num": 18000.005,
-  //                 "time": "2023-09-27 11"
-  //               },
-  //               {
-  //                 "num": 0.007,
-  //                 "time": "2023-09-27 20"
-  //               }
-  //             ],
-  //             "sort": []
-  //           })
-  //     },100)
-  //   })
-  // }
+  if(global_config.localData){
+    return new Promise<AxiosResponse<T>>(resolve => {
+      setTimeout(()=>{
+        resolve({
+              "change": [],
+              "recognize": [],
+              "segmentation": [
+                {
+                  "num": 10.654,
+                  "time": "2023-10-08 16"
+                },
+                {
+                  "num": 0.005,
+                  "time": "2023-10-08 17"
+                },
+                {
+                  "num": 0.001,
+                  "time": "2023-10-08 18"
+                },
+                {
+                  "num": 18000.005,
+                  "time": "2023-10-08 11"
+                },
+                {
+                  "num": 0.007,
+                  "time": "2023-10-08 20"
+                }
+              ],
+              "sort": []
+            })
+      },100)
+    })
+  }
   return request<any>(`/bigIntelligence/v1/getAverageTreatment`, {
     method: 'GET',
     params
@@ -271,7 +296,7 @@ export function getResourceUsage(params?:any){
               }
             ],
           },
-          "success": true
+          "success": false
         })
       },100)
     })

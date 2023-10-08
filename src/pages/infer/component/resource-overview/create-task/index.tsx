@@ -79,10 +79,10 @@ export default function(props){
       onCancel={onClose}
       className={styles.createTaskModal}
     >
-
       <Form
         className={styles.createTask}
         form={form}
+        initialValues={{level: 0}}
         labelCol={{ span: 6 }}
         wrapperCol={{ span: 18 }}
         layout="horizontal"
@@ -105,7 +105,7 @@ export default function(props){
         <Form.Item tooltip="一级最低，五级最高" label="优先级" name="level" required>
           <Slider tooltip={{
             open: false
-          }} marks={marks} min={0} max={4} defaultValue={0} />
+          }} marks={marks} min={0} max={4}/>
           {/*<Radio.Group>*/}
           {/*  <Radio value={0}>一级</Radio>*/}
           {/*  <Radio value={1}>二级</Radio>*/}

@@ -21,7 +21,7 @@ export default defineConfig({
   initialState: {},
   model: {},
   title: '灵眸大模型一体推理平台',
-  favicons: ['./favicon.svg'],
+  favicons: ['./favicon.png'],
   headScripts: [
     { src: './config.js' },
   ],

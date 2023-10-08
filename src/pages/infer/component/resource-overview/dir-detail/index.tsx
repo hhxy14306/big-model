@@ -1,4 +1,4 @@
-import React, { createElement, useEffect } from 'react';
+import React, { createElement, useEffect, useMemo } from 'react';
 import styles from './index.less'
 import { Badge, Modal, Table, Tabs, Input, Radio, Checkbox } from 'antd';
 import TaskList from './task-list/index'
@@ -12,17 +12,17 @@ export default function(props){
       key: '1',
       children: createElement(TaskList, {record}),
     },
-    {
-      label: 'Tab 2',
-      key: '2',
-      children: 'Tab 2',
-      disabled: true,
-    },
+    // {
+    //   label: 'Tab 2',
+    //   key: '2',
+    //   children: 'Tab 2',
+    //   disabled: true,
+    // },
   ]
 
   return (
     <Modal
-      title="配置详情"
+      title="虚拟核详情"
       getContainer={false}
       className={styles.dirDetail}
       open={visible}

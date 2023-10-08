@@ -29,8 +29,6 @@ export default function(props){
   async function handleOk(){
     setConfirmLoading(true);
     const values = await form.validateFields();
-    console.log(12313123123213,initialState.username)
-
     try{
       const res = await updateInfer({
         operate_type: parseInt(record.operate_type),
@@ -44,6 +42,8 @@ export default function(props){
       if(res.success){
         message.success("操作成功！");
         onClose();
+      }else {
+        message.error("操作失败,"+res.msg);
       }
     }catch (e) {
       message.error("操作失败！")

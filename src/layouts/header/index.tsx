@@ -1,7 +1,7 @@
 import React, {createElement, useState, Suspense, useEffect} from 'react';
 import { Link, Outlet, history, useModel,useLocation } from 'umi';
 import styles from './index.less';
-import { ReactComponent as LogoSvg} from '@/assets/logo.svg'
+import logo from '@/assets/logo.png'
 import userIcon from '@/assets/userIcon.png'
 import {Badge, Dropdown, Menu, message, Space} from 'antd';
 import {AppstoreOutlined, DownOutlined, MailOutlined, SettingOutlined} from '@ant-design/icons';
@@ -40,7 +40,7 @@ function ShowBadge(props){
     }
   }
 
-  return <Badge count={result} size="small" />
+  return <Badge count={result} overflowCount={99999999999999999999} size="small" />
 }
 
 export default function Header(props) {
@@ -98,22 +98,15 @@ export default function Header(props) {
   const handleMenuClick: MenuProps['onClick'] =async (e) => {
     console.log('click', e);
     if(e.key === 'logout'){
-      const res = await logOut();
-      console.log(res)
-      if(res.success){
-        message.success("退出成功！").then(res=>{
-          history.push("/login")
-        });
-      }else{
-        message.error("退出失败！")
-      }
+      logOut().then();
+      history.push("/login")
     }
   };
   return (
     <div className={styles.headerLayout}>
       <div className={styles.leftArea}>
-        <LogoSvg width={32} height={32}/>
-        <span className={styles.title}>灵眸大模型一体推理平台</span>
+        <img src={logo} alt=""/>
+        <span className={styles.title}>遥感大模型一体推理平台</span>
       </div>
       <div className={styles.contentArea}>
         <Menu theme="dark" onClick={onClick} selectedKeys={[current]} mode="horizontal" items={menuData} />
