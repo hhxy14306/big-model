@@ -14,7 +14,7 @@ import { ReactComponent as StudioVisualizeIcon } from '@/assets/menuIcon/studioV
 import router from '../../../config/router'
 import {IconMap} from "@/components/MenuIcon";
 import{wrapPromise} from '@/utils';
-import {getLog} from "@/services/log";
+import {getWarnLog} from "@/services/warn";
 import {logOut} from "@/services";
 
 const { global_config } = window as any
@@ -31,7 +31,7 @@ function ShowBadge(props){
   },[]);
 
   async function getLogCount(){
-    const res = await getLog({
+    const res = await getWarnLog({
       start_time: -1,
       end_time: -1
     });

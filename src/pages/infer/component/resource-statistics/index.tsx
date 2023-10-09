@@ -58,7 +58,7 @@ export default () => {
   const chartsConfigList = [
     {
       key: 'inferRequest',
-      name: '推理请求（个）',
+      name: '推理请求处理速率（张/十分钟）',
       onChange: (e)=>{
         setSearchParams(draft => {
           draft.params1 = e.target.value;
@@ -67,7 +67,7 @@ export default () => {
     },
     {
       key: 'dealTime',
-      name: '遥感数据平均处理时间（秒）',
+      name: '遥感数据平均处理时间（秒/张）',
       onChange: (e)=>{
         console.log( e.target.value)
         setSearchParams(draft => {
@@ -77,7 +77,7 @@ export default () => {
     },
     {
       key: 'resourceUsageRate',
-      name: '一体机资源使用率（%）',
+      name: '资源使用率',
       onChange: (e)=>{
         setSearchParams(draft => {
           draft.params3 = e.target.value;
@@ -97,7 +97,27 @@ export default () => {
       xAxis: {
         // type: 'timeCat',
         tickCount: 100,
-        tickInterval: 1
+        tickInterval: 1,
+        nice: true,
+        tickLine: {
+          style: {
+            lineWidth: 2,
+            stroke: '#aaa',
+          },
+          length: 5,
+        },
+        // tickCount: 8,
+        // 文本标签
+        label: {
+          // autoRotate: false,
+          rotate: Math.PI / 3,
+          offset: 10,
+          style: {
+            fill: '#aaa',
+            fontSize: 12,
+          },
+          formatter: (name) => name,
+        },
       },
       yAxis: {
         label: {
@@ -105,9 +125,9 @@ export default () => {
         },
         //tickInterval: 10
       },
-      scrollbar:{
-        x: {}
-      },
+      // scrollbar:{
+      //   x: {}
+      // },
       legend: {
         position: 'bottom',
         itemName: {
@@ -115,6 +135,20 @@ export default () => {
             fill: '#000',
           },
           formatter: (name) => name,
+        },
+      },
+      point: {
+        size: 5,
+        style: {
+          lineWidth: 1,
+          fillOpacity: 1,
+        },
+        shape: (item) => {
+          if (item.category === 'Cement production') {
+            return 'circle';
+          }
+
+          return 'diamond';
         },
       },
       smooth: true,
@@ -129,15 +163,37 @@ export default () => {
       xAxis: {
         // type: 'timeCat',
         //tickCount: 5,
+        tickCount: 100,
+        tickInterval: 1,
+        //nice: true,
+        tickLine: {
+          style: {
+            lineWidth: 2,
+            stroke: '#aaa',
+          },
+          length: 5,
+        },
+        // tickCount: 8,
+        // 文本标签
+        label: {
+          // autoRotate: false,
+          rotate: Math.PI / 3,
+          offset: 10,
+          style: {
+            fill: '#aaa',
+            fontSize: 12,
+          },
+          formatter: (name) => name,
+        },
       },
       yAxis:{
         label: {
           //formatter: (v) => `${v}分钟`
         },
       },
-      scrollbar:{
-        x: {}
-      },
+      // scrollbar:{
+      //   x: {}
+      // },
       legend: {
         position: 'bottom',
         itemName: {
@@ -145,6 +201,20 @@ export default () => {
             fill: '#000',
           },
           formatter: (name) => name,
+        },
+      },
+      point: {
+        size: 5,
+        style: {
+          lineWidth: 1,
+          fillOpacity: 1,
+        },
+        shape: (item) => {
+          if (item.category === 'Cement production') {
+            return 'circle';
+          }
+
+          return 'diamond';
         },
       },
       smooth: true,
@@ -154,20 +224,56 @@ export default () => {
       title: '123',
       padding: 'auto',
       xField: 'time',
-      yField: 'num',
+      yField: 'usage',
       seriesField: 'name',
       xAxis: {
         // type: 'timeCat',
-        tickCount: 5,
+        tickCount: 100,
+        tickInterval: 1,
+        tickLine: {
+          style: {
+            lineWidth: 2,
+            stroke: '#aaa',
+          },
+          length: 5,
+        },
+        // tickCount: 8,
+        // 文本标签
+        label: {
+          // autoRotate: false,
+          rotate: Math.PI / 3,
+          offset: 10,
+          style: {
+            fill: '#aaa',
+            fontSize: 12,
+          },
+          formatter: (name) => name,
+        },
       },
       yAxis: {
         label: {
-          //formatter: (v) => `${v}%`
+          formatter: (v) => {
+            return `${v}%`
+          }
         },
         //tickInterval: 10
       },
       scrollbar:{
         x: {}
+      },
+      point: {
+        size: 5,
+        style: {
+          lineWidth: 1,
+          fillOpacity: 1,
+        },
+        shape: (item) => {
+          if (item.category === 'Cement production') {
+            return 'circle';
+          }
+
+          return 'diamond';
+        },
       },
       legend: {
         position: 'bottom',
@@ -175,7 +281,14 @@ export default () => {
           style: {
             fill: '#000',
           },
-          formatter: (name) => name,
+          formatter: (name) => {
+            return name
+          },
+        },
+      },
+      tooltip: {
+        formatter: (datum) => {
+          return { name: datum.name, value: datum.usage + '%' };
         },
       },
       smooth: true,
@@ -184,6 +297,12 @@ export default () => {
 
   useEffect(()=>{
     Promise.all([getTasksData(),getAverageTreatmentData(),getResourceUsageData()]).then(()=>{});
+
+    const timer = setTimeout(()=>{
+      console.log(123)
+      Promise.all([getTasksData(),getAverageTreatmentData(),getResourceUsageData()]).then(()=>{});
+    }, 3000)
+    return ()=>clearTimeout(timer);
   },[]);
 
   useEffect(()=>{
@@ -212,19 +331,19 @@ export default () => {
       const data = [];
 
       //---临时添加
-      const currentDay = dayjs(new Date()).format("YYYY-MM-DD");
+      let currentTime = new Date(parseInt(new Date().getTime()/600000)*600000).getTime();
       const xData = new Map();
       const modelList = ['分割', '分类', '识别', '变化'];
       modelList.forEach(name=>{
         const tempMap = new Map();
-        for(let i=1;i<24;i++){
-          const time = currentDay + ( i>=10 ? ` ${i}` : ` 0${i}`);
+        for(let i=6; i>0; i--){
+          const time = dayjs(currentTime - i*10*60*1000).format("YYYY-MM-DD HH:mm");
           tempMap.set(time,{name, time, num: 0})
         }
         xData.set(name, tempMap);
       })
 
-      console.log("currentDate",xData)
+
 
       res.segmentation.forEach(item=>{
         const tempMap: Map<string,any> = xData.get("分割");
@@ -249,14 +368,12 @@ export default () => {
           data2.push(item)
         })
       });
-      console.log("ffffff",data2)
       setChartsConfig(draft => {
         // if(total === 0){
         //   draft.inferRequest.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
         // }
         draft.inferRequest.data = data2;
       });
-
       // ---
 
       // if(!res.segmentation || res.segmentation.length === 0){
@@ -333,6 +450,7 @@ export default () => {
       draft.dealTime = true;
     })
   }
+
   async function getAverageTreatmentData(){
     console.log(searchParams.params2)
     const params = getParams(searchParams.params2)
@@ -348,13 +466,16 @@ export default () => {
       const data = [];
 
       //---临时添加
-      const currentDay = dayjs(new Date()).format("YYYY-MM-DD");
+      let currentTime = new Date();
+      if(new Date().getHours()%2 !== 0){
+        currentTime = new Date(currentTime - 60*60*1000);
+      }
       const xData = new Map();
       const modelList = ['分割', '分类', '识别', '变化'];
       modelList.forEach(name=>{
         const tempMap = new Map();
-        for(let i=1;i<24;i++){
-          const time = currentDay + ( i>=10 ? ` ${i}` : ` 0${i}`);
+        for(let i=22; i>=0; i-=2){
+          const time = dayjs(currentTime - i*60*60*1000).format("YYYY-MM-DD HH");
           tempMap.set(time,{name, time, num: 0})
         }
         xData.set(name, tempMap);
@@ -365,18 +486,22 @@ export default () => {
       res.segmentation.forEach(item=>{
         const tempMap: Map<string,any> = xData.get("分割");
         tempMap.set(item.time, {...item, name: '分割'})
+        total += item.num;
       });
       res.sort.forEach(item=>{
         const tempMap: Map<string,any> = xData.get("分类");
         tempMap.set(item.time, {...item, name: '分类'});
+        total += item.num;
       });
       res.recognize.forEach(item=>{
         const tempMap: Map<string,any> = xData.get("识别");
         tempMap.set(item.time, {...item, name: '识别'});
+        total += item.num;
       });
       res.change.forEach(item=>{
         const tempMap: Map<string,any> = xData.get("变化");
         tempMap.set(item.time, {...item, name: '变化'});
+        total += item.num;
       });
 
       const data2 = [];
@@ -385,18 +510,14 @@ export default () => {
           data2.push(item)
         })
       });
-      console.log("ffffff",data2)
       setChartsConfig(draft => {
-        // if(total === 0){
-        //   draft.inferRequest.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
-        // }
+        if(total === 0){
+          draft.dealTime.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+        }
         draft.dealTime.data = data2;
       });
 
       // ---
-
-
-
 
       // if(!res.segmentation || res.segmentation.length === 0){
       //   data.push({name: '分割', num: 0})
@@ -446,7 +567,7 @@ export default () => {
 
   function onResourceUsageDataNoData(){
     const timeList = getAxis(searchParams.params3);
-    const nameList = ['内存用量（%）', '磁盘用量详情（%）', 'CPU用量（%）'];
+    const nameList = ['内存', '磁盘', 'CPU'];
     const data = [];
     timeList.forEach(time=>{
       nameList.forEach(name=>{
@@ -457,19 +578,18 @@ export default () => {
       nameList.forEach(name=>{
         data.push({name, usage, time: timeList});
       })
-    })
+    });
     setChartsConfig(draft => {
       draft.resourceUsageRate.data = data;
       draft.resourceUsageRate.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
     });
     setNoDate(draft => {
       draft.resourceUsageRate = true;
-    })
+    });
   }
 
   async function getResourceUsageData(){
     const params = getParams(searchParams.params3)
-    console.log(params)
     setLoading(draft => {
       draft.resourceUsageRate = true;
     });
@@ -477,31 +597,39 @@ export default () => {
       draft.resourceUsageRate = false;
     });
     try {
-      const res = await getResourceUsage(params);
+      const res = await getResourceUsage();
       const data = [];
       let total = 0;
-      console.log(123123,res)
-      if(res.success && res.data?.natural_resources && res.data?.natural_resources.length ){
-        res.data?.natural_resources[0]?.node_monitor.forEach(item=>{
-          item.values.forEach(i=>{
-            total++;
+      const mapConfig = [
+        {key: 'cpu_use_num', label: 'CPU'},
+        {key: 'disk_use_num', label: '磁盘'},
+        {key: 'mem_use_num', label: '内存'},
+      ]
+      if(res.success && res.data ){
+        res.data?.forEach(item=>{
+          mapConfig.forEach(i=>{
+            console.log(item.time, dayjs(item.time).format('YYYY-MM-DD HH:mm:ss'),dayjs(item.time).format('YYYY-MM-DD HH:mm:ss'))
             data.push({
-              name: item.metric_name,
-              time: dayjs(i.time).format('HH:MM:ss'),
-              usage: i.usage
+              name: i.label,
+              time: dayjs(item.time).format('HH:mm:ss'),
+              time1: dayjs(item.time).format('YYYY-MM-DD HH:mm:ss'),
+              usage: item[i.key],
+              time2: item.time,
             })
           })
         });
       }
+      console.log("HH:MM:ssdata",res.data.length, data.length, data.sort((pre, next)=> pre.time2 - next.time2))
+      //
       setChartsConfig(draft => {
-        draft.resourceUsageRate.data = data;
-        draft.resourceUsageRate.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
-        if(total === 0){
-          draft.resourceUsageRate.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
-        }
-        if(data.length === 0){
-          onResourceUsageDataNoData()
-        }
+        draft.resourceUsageRate.data = data.sort((pre, next)=> pre.time2 - next.time2);
+        //draft.resourceUsageRate.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+        // if(total === 0){
+        //   draft.resourceUsageRate.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+        // }
+        // if(data.length === 0){
+        //   onResourceUsageDataNoData()
+        // }
       });
     }catch (e) {
       onResourceUsageDataNoData()
@@ -515,7 +643,7 @@ export default () => {
       <div className={classnames(styles.resourceStatistics,'boxShadow')}>
         <Card
             bordered={false}
-            title={<span className={styles.title}>一体机资源使用统计</span>}>
+            title={<span className={styles.title}>遥感数据推理统计</span>}>
           <div className={styles.content}>
             {
               chartsConfigList.map(item=>(

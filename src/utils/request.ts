@@ -30,7 +30,7 @@ service.interceptors.request.use(
     //   config.headers['X-Token'] = getToken()
     //
     // }
-    console.log(config.url)
+   // console.log(config.url)
     return config
   },
   (error) => {
@@ -53,7 +53,6 @@ service.interceptors.response.use(
    */
   (response) => {
     const res = response.data
-    console.log(res)
     switch (res.code){
       case 200:
        default:

@@ -109,7 +109,6 @@ export default function (props) {
             ...searchParams
         };
         const res = await getChainInfo(params);
-        console.log(res)
         if(res.success){
             setPagination(draft => {
                 draft.total = res.data.total

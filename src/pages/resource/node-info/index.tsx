@@ -131,7 +131,6 @@ export default function (props: any){
             ...searchParams
         };
         const res = await getNodeInfo(params);
-        console.log(res)
         if(res.success){
             setPagination(draft => {
                 draft.total = res.data.total
@@ -140,7 +139,6 @@ export default function (props: any){
         return res.data.natural_resources
     })
     const {isLoading, isError, data } = query;
-    console.log(data)
     if(isLoading) return <Spin size="large" className={classnames("center_X_Y_transform")}/>
     return(
         <div className={styles.nodeInfo}>

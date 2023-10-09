@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useImmer } from 'use-immer';
 import styles from './index.less';
-import { Badge, Checkbox, Input, Table } from 'antd';
+import {Badge, Checkbox, Divider, Input, Table} from 'antd';
 import {useQuery} from "umi";
 import { getNodeDetail } from '@/services/infer'
 import dayjs from 'dayjs';
 import ShowLog from '../show-log'
+import ShowDetail from '../show-detail'
 
 export default function(props){
   const {record} = props;
@@ -19,17 +20,30 @@ export default function(props){
       }
   });
 
-  console.log(record)
+    const [showDetail, setShowDetail] = useImmer({
+        visible: false,
+        record: {},
+        onClose: ()=> {
+            setShowDetail(draft => {
+                draft.visible = false
+            })
+        }
+    });
+
   const columns = [
       {
-          title: '序号',
-          dataIndex: 'index',
-          key: 'index',
+          title: '任务ID',
+          dataIndex: 'taskID',
+          key: 'taskID',
+          width: '2.2rem',
+          ellipsis: true,
           align: 'center'
       },
       {
           title: '遥感数据路径',
           dataIndex: 'folder',
+          width: '2.2rem',
+          ellipsis: true,
           key: 'folder',
       },
       {
@@ -39,8 +53,8 @@ export default function(props){
       },
       {
           title: '提交时间',
-          dataIndex: 'cretetime',
-          key: 'cretetime',
+          dataIndex: 'createtime',
+          key: 'createtime',
           align: 'center'
       },
       {
@@ -63,26 +77,39 @@ export default function(props){
           title: '操作',
           dataIndex: 'operate',
           key: 'operate',
+          width: '1.7rem',
           align: 'center',
           render: (_,rowData)=>{
-              console.log(rowData)
               const disabled = false
               return (
-                  <a
-                      onClick={()=>{
-                          if(disabled) return;
-                          setShowLog(draft => {
-                              draft.visible = true;
-                              draft.record = {
-                                  chipData: record,
-                                  taskData: rowData,
-                              };
-                          })
-                      }}
-                      className={disabled ? styles.disabledDirLog : styles.dirLog}
-                  >
-                      查看日志
-                  </a>
+                  <>
+                      <a
+                          onClick={()=>{
+                              if(disabled) return;
+                              setShowDetail(draft => {
+                                  draft.visible = true;
+                                  draft.record = rowData;
+                              })
+                          }}
+                          className={disabled ? styles.disabledDirLog : styles.dirLog}
+                      >查看详情</a>
+                      <Divider type="vertical"/>
+                      <a
+                          onClick={()=>{
+                              if(disabled) return;
+                              setShowLog(draft => {
+                                  draft.visible = true;
+                                  draft.record = {
+                                      chipData: record,
+                                      taskData: rowData,
+                                  };
+                              })
+                          }}
+                          className={disabled ? styles.disabledDirLog : styles.dirLog}
+                      >
+                          查看日志
+                      </a>
+                  </>
               )
           }
       },
@@ -99,14 +126,7 @@ export default function(props){
       nodeName,
       //...searchParams,
     });
-    return res.taskList.map(item=>({
-      index: item.taskID,
-      submitPerson: item.userName,
-      url: item.folder,
-      time: item.createtime.split(" ")[0],
-      //time: dayjs(new Date(item.createtime), 'YYYY-MM-DD'),
-      status: 0,
-    }))
+    return res.taskList
   });
   const {isLoading, isError, data, refetch} = query;
   console.log(query)
@@ -154,7 +174,7 @@ export default function(props){
           />
         </div>
         <Table
-          rowKey="index"
+          rowKey="taskID"
           border={false}
           dataSource={data}
           loading={isLoading}
@@ -162,6 +182,10 @@ export default function(props){
         {
             showLog.visible &&
             <ShowLog {...showLog}/>
+        }
+        {
+            showDetail.visible &&
+            <ShowDetail {...showDetail}/>
         }
     </span>
   )

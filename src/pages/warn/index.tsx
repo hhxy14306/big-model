@@ -63,7 +63,6 @@ export default function (props) {
     return res.data.list
   })
   const {isLoading, isError, data } = query;
-  console.log(data)
   if(isLoading) return <Spin size="large" className={classnames("center_X_Y_transform")}/>
 
   return(

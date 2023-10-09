@@ -38,10 +38,9 @@ export default function(props){
         //模型类型 0:场景分割 1:检测分类 2:目标识别 :变化检测
         algorithm_type: values.algorithmType
       })
-      console.log(res)
       if(res.success){
         message.success("操作成功！");
-        onClose();
+        onClose(true);
       }else {
         message.error("操作失败,"+res.msg);
       }

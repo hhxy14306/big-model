@@ -9,7 +9,6 @@ export default function (props){
 
     async function getData(){
         const res = await getTaskLog();
-        console.log(res)
         //return res
         return  [
             'Racing car sprays burning fuel into crowd.',

@@ -18,7 +18,6 @@ export default function HomePage() {
                 "user_name": values.username,
                 "user_pass": values.password,
             })
-            console.log(res)
             if(res.success){
                 setInitialState(res.data)
                 history.replace("/");

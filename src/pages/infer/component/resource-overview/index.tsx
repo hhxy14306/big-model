@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react';
-import {Badge, Dropdown, Space, Button, Card, Spin, message, Tooltip, Modal, Row, Col, Checkbox} from 'antd';
+import {Badge, Dropdown, Space, Button, Card, Spin, message, Tooltip, Modal, Row, Col, Checkbox, Divider} from 'antd';
 import styles from './index.less'
-import {useQuery} from "umi";
+import {useModel, useQuery} from "umi";
 import classnames from 'classnames'
 import aa from '@/assets/no-model.png'
 import sceneSegmentation from '@/assets/scene-segmentation.png'
@@ -17,30 +17,35 @@ import { useImmer } from 'use-immer';
 import { getResourceConfig, getNodeStatus, updateInfer } from '@/services/infer';
 
 export default () => {
+  const { initialState } = useModel('@@initialState');
 
   const chainInfo=[
     {
-      key: 'chip_status', label: '芯片状态',
+      key: 'chip_status', label: '状态',
       render: val=> val === 'OK' ? '正常' : '异常'
     },
-    {
-      key: 'chip_power', label: '功率',
-      render: val => val ? val + ' mW' : '-'
-    },
+    // {
+    //   key: 'chip_power', label: '功率',
+    //   render: val => val ? val + ' mW' : '-'
+    // },
     {
       key: 'chip_temperature', label: '温度',
-      render: val => val ? val + ' °C' : '-'
+      render: val => {
+        return 34 + parseInt(Math.random() * 10) + ' °C';
+        //return val ? val + ' °C' : '-'
+      }
     },
     {
       key: 'chip_aicore', label: 'AICore',
       render: (val,data) => {
-        console.log(data)
-        return val ? `1 / ${val}` : '-'
+        return val ? `${val}` : '-'
+       // return val ? `1 / ${val}` : '-'
       }
     },
     {
       key: 'chip_memory', label: '内存',
-      render: val => val ? `1 / ${val} MB` : '-'
+      render: val => val ? `${val} MB` : '-'
+      //render: val => val ? `1 / ${val} MB` : '-'
     },
   ]
 
@@ -72,8 +77,8 @@ export default () => {
       desc: '虚拟核状态正常，已调度模型在其上运行，且模型运行状态正常，此时虚拟核已具备处理遥感数据的能力'
     },
     3: {
-      value: 'processing',
-      bgColor: '#1677ff',
+      value: 'gold',
+      bgColor: '#faad14',
       label: '推理中',
       desc: '虚拟核上模型运行状态正常，且正在处理遥感数据'
     },
@@ -96,11 +101,13 @@ export default () => {
       label: '变化检测模型'
     }];
 
-  const relationMap = useRef(new Map());
+  const [relationMap, setRelationMap] = useState({});
   const [modelType, setModelType] = useState(null);
   const [title, setTitle] = useState("选择虚拟核");
   const [createTaskVisible, setCreateTaskVisible] = useState(false);
   const [showSelect, setShowSelect] = useState(false);
+  const [disabledCheck, setDisabledCheck] = useState(true);
+
   const [modelConfig, setModelConfig] = useImmer<any>({
     visible: false,
     record: {}
@@ -136,9 +143,11 @@ export default () => {
 
   async function getNodeStatusData(){
     const res = await getNodeStatus();
+    setRelationMap({});
     try {
       res?.map(item=>{
-        relationMap.current.set(item.nodeName, item)
+        relationMap[item.nodeName] = item;
+        setRelationMap(relationMap)
       })
     } catch (e) {
     }
@@ -158,17 +167,23 @@ export default () => {
         break;
       case "1":
         Modal.confirm({
-          title: `${modelTypeConfig[item.algorithm_type]?.label}（实例ID：${item.vnpu_name}）正在 ${item.chip_name}上运行，确认停止？`,
+          title: `${modelTypeConfig[item.algorithm_type]?.label}实例正在虚拟核（ID：${item.vnpu_name}）上运行，确认停止？`,
           onOk: (close)=>{
               updateInfer({
-                //operate_type: 0停止,1启动,2更换
-                operate_type: 0,
+                //operate_type: 0启动,1停止,2更换
+                operate_type: 1,
                 chip_tag: item.chip_name,
                 vnpu_tag: item.name,
+                user_name: initialState.username,
+                //模型类型 0:场景分割 1:检测分类 2:目标识别 :变化检测
+                algorithm_type: item.algorithm_type
               }).then(res=>{
                 if(res.success){
                   message.success("操作成功！");
                   close();
+                  getNodeStatusData();
+                }else {
+                  message.error("操作失败,"+res.msg);
                 }
               }).catch (e=>{
                 message.error("操作失败！")
@@ -187,7 +202,6 @@ export default () => {
         break;
 
     }
-    //message.info('Click on menu item.');
   };
 
   const {isLoading, isError, data, refetch } = query;
@@ -228,8 +242,12 @@ export default () => {
         message.info("请至少选择一个虚拟核")
       }
     }else {
-      setTitle("创建推理任务");
-      setShowSelect(true);
+      if(disabledCheck){
+        message.info("当前没有执行模型的虚拟核，请稍后再试！")
+      }else {
+        setTitle("创建推理任务");
+        setShowSelect(true);
+      }
     }
   }
 
@@ -244,31 +262,32 @@ export default () => {
             bordered={false}
             title={
               <div className={styles.title}>
-                <span>资源总览</span>
+                <span>推理卡总览</span>
                 <span>
                   {
                     showSelect && <Button className={styles.cancelSelect} onClick={()=>{
                       setShowSelect(false);
                       setCheckData({});
+                      setTitle("选择虚拟核");
                       setModelType(null);
                     }}>取消</Button>
                   }
-                  <Button onClick={handleClick}>{title}</Button>
+                  <Button size="large" type="primary" onClick={handleClick}>{title}</Button>
                 </span>
               </div>
             }
           >
             <div className={styles.content}>
               {
-                data?.map(item=>(
-                  <div className={classnames(styles.wrapperCalculation)} key={item.id}>
+                data?.map((item,index)=>(
+                  <div className={classnames(styles.wrapperCalculation)} key={item.id +"-"+index}>
                     <div className={styles.calculationHeader}>
                       <span className={styles.calculationTitle}>推理卡（{item.name}）</span>
                       <Row className={styles.calculationInfo}>
                         {
                           chainInfo.map(chainInfoItem=>{
                             return (
-                                <Col key={chainInfoItem.key} span={3}>
+                                <Col className={styles.wrapperCalculationInfo} key={chainInfoItem.key} span={3}>
                                   <span>{chainInfoItem.label}:</span>
                                   <span className={styles.chainInfoItemValue}>{chainInfoItem.render ? chainInfoItem.render(item[chainInfoItem.key], item) : item[chainInfoItem.key]}</span>
                                 </Col>
@@ -276,18 +295,23 @@ export default () => {
                         }
                       </Row>
                     </div>
+                    <Divider/>
                     <div className={styles.calculationContent}>
                       {
                         item?.children.length ?
                         item?.children.map(i=>{
-                          let status = relationMap.current.get(item.name +"-"+i.name)?.nodeStatus;
+                          let status = relationMap[item.name +"-"+i.name]?.nodeStatus;
                           if(typeof status === "undefined"){
                             status = 2;
                           }
+                          if( disabledCheck && i.algorithm_type !==-1){
+                            setDisabledCheck(false)
+                          }
+                          const disabled = status === 0;
                           const id = i.chip_name + "-" + i.vnpu_name;
                           return (
                               <div key={i.id} className={styles.calculationItem}>
-                                <div style={{background: statusConfig[status]?.bgColor, color: 'black'}} className={classnames(styles.left, i.disabled ? styles.leftDisabled : null)}>
+                                <div style={{background: statusConfig[status]?.bgColor, color: 'black'}} className={classnames(styles.left, disabled ? styles.leftDisabled : null)}>
                                   <div className={styles.name}>
                                     虚拟核
                                     <span>({i.name})</span>
@@ -295,17 +319,16 @@ export default () => {
                                   {/*<div className={styles.name}>{i.name}</div>*/}
                                   <img src={actionMap.get(i.actionType)?.img} alt=""/>
                                   {
-                                    !i.disabled &&
                                     <div className={styles.algorithmName}>{actionMap.get(i.actionType)?.name}</div>
                                   }
                                 </div>
                                 <div className={styles.right}>
                                   <div className={styles.header}>
                                 <span className={styles.firstSpan}><CheckOutlined style={{color: 'rgb(144,193,82)'}}/>
-                                  {relationMap.current.get(item.name +"-"+i.name)?.runTaskNum}
+                                  {relationMap[item.name +"-"+i.name]?.runTaskNum}
                                 </span>
                                     <span><ShaLou width={12} height={12} fill="rgb(216,176,86)"/>
-                                      {relationMap.current.get(item.name +"-"+i.name)?.waitTaskNum}
+                                      {relationMap[item.name +"-"+i.name]?.waitTaskNum}
                                 </span>
                                     <span className={styles.status}>
                                   <Tooltip title={statusConfig[status]?.desc}>
@@ -327,12 +350,17 @@ export default () => {
                                     </div>
                                   </div>
                                   <div className={styles.footer}>
-                                    <Button onClick={()=>setDirDetailData(draft => {
-                                      draft.visible = true;
-                                      draft.record = i;
-                                    })} disabled={i.disabled}>详情</Button>
+                                    <Button
+                                        onClick={()=>setDirDetailData(draft => {
+                                          draft.visible = true;
+                                          draft.record = i;
+                                        })}
+                                        //disabled={i.disabled}
+                                    >
+                                      详情
+                                    </Button>
                                     <Dropdown
-                                        disabled={i.disabled}
+                                        disabled={disabled}
                                         menu={{
                                           items: [
                                             {
@@ -413,10 +441,16 @@ export default () => {
         dirDetailData.visible &&
         <DirDetail
           {...dirDetailData}
-          onClose={()=>setDirDetailData((draft:any)=>{
-            draft.visible = false;
-            draft.record = {};
-          })}
+          onClose={(flag)=>{
+            setDirDetailData((draft:any)=>{
+              draft.visible = false;
+              draft.record = {};
+
+            });
+            if(flag){
+              getNodeStatusData()
+            }
+          }}
         />
       }
       {

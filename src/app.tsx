@@ -2,7 +2,6 @@ import {getCurrentUser, login} from '@/services'
 export async function getInitialState(): Promise<any> {
   if(location.hash === "#/login") return
   const res = await getCurrentUser();
-  console.log(res)
   // login({
   //   "user_name": "admin",
   //   "user_pass": "123456"

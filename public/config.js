@@ -3,6 +3,6 @@ window.global_config = {
   BASE_URL: "/api",
   //BASE_URL: ORIGIN + ':5050',
   showWarehouse: true,
-  localData: true,
+  localData: false,
 }
 
