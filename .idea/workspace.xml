@@ -2,29 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d26e99aa-ee19-4e7d-bcf9-c5c6f347159d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/dir-detail/show-detail/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.umirc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.umirc.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/global.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/global.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/header/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/header/index.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layouts/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/dir-detail/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/dir-detail/index.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/dir-detail/show-log/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/dir-detail/show-log/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/dir-detail/task-list/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/dir-detail/task-list/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/model-config/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/model-config/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/index.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/resource/chip-info/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/resource/chip-info/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/resource/node-info/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/resource/node-info/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user-mgt/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user-mgt/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/warn/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/warn/index.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/warn/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/warn/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/infer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/infer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/infer/component/resource-overview/dir-detail" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components" />
     <property name="nodejs_package_manager_path" value="pnpm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -65,14 +56,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components" />
+      <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time" />
       <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-overview/dir-detail" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/pages/user-mgt" />
-      <recent name="$PROJECT_DIR$/src/pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate" />
+      <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/index" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -105,8 +100,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -127,7 +122,9 @@
       <workItem from="1695751728517" duration="341000" />
       <workItem from="1695752114422" duration="42702000" />
       <workItem from="1696473810689" duration="2484000" />
-      <workItem from="1696495609995" duration="69612000" />
+      <workItem from="1696495609995" duration="73905000" />
+      <workItem from="1697506326925" duration="43000" />
+      <workItem from="1697510239977" duration="11985000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1695344792615</created>

@@ -17,7 +17,27 @@
     .title{
       font-weight: 600;
       font-size: .18rem;
-      margin-left: .1rem;
+      .titleLevel1{
+        font-size: .2rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        text-shadow: 2px 2px #ccc, -2px -2px #333;
+        //text-shadow: #ccc 0 0 .1rem;
+
+        .dot{
+          width: .12rem;
+          height: .12rem;
+          background: white;
+          border-radius: .12rem;
+          margin: 0 .02rem;
+        }
+      }
+      .titleLevel2{
+        font-weight: 500;
+        margin-left: .1rem;
+      }
     }
   }
   .contentArea{

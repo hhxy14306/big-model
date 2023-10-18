@@ -668,6 +668,265 @@ export function getTasks(params?:any){
   });
 }
 
+export function getTaskAverageTime(params?:any){
+  if(global_config.localData){
+    return new Promise<AxiosResponse<T>>(resolve => {
+      setTimeout(()=>{
+        resolve([
+          {
+            "Id": "fcdeb61c-4b21-43f8-a781-c55cde4da1f3", //id
+            "averageTime": 11.4972,                                     //平均时间
+            "consumernum": 4,                                            //前十秒下发的任务个数
+            "createTime": "2023-10-10 04:43:42.370",        //任务创建时间
+            "errornum": 0,                                                 //错误个数
+            "fileTime": [                                                    //单个任务完成的时间
+              38.933,
+              38.966,
+              37.943,
+              37.871,
+              37.053,
+              37.009,
+              38.967,
+              38.946,
+              38.562,
+              38.54
+            ],
+            "modeType": 11,                                                 //模型类型 11：分割   12：分类  13：识别  14： 变化
+            "num": 10,                                                         //总个数
+            "parallel": 0,                                                      //正在执行的个数
+            "sucnum": 10,                                                   //执行成功的个数
+            "time": 114.972,                                                //总时间
+            "userName": "admin"                                       //提交用户
+          },
+          {
+            "Id": "9fd81059-410c-4b50-a0ee-7d5920fe8635",
+            "averageTime": 24.910400000000003,
+            "consumernum": 1,
+            "createTime": "2023-10-10 04:34:37.190",
+            "errornum": 0,
+            "fileTime": [
+              25.019,
+              24.94,
+              25.028,
+              25.063,
+              25.025,
+              24.982,
+              24.995,
+              24.98,
+              24.923,
+              24.127
+            ],
+            "modeType": 11,
+            "num": 10,
+            "parallel": 0,
+            "sucnum": 10,
+            "time": 249.104,
+            "userName": "admin"
+          },
+          {
+            "Id": "532696a3-52f5-45ba-a579-d0c112e919f3",
+            "averageTime": 24.6785,
+            "consumernum": 1,
+            "createTime": "2023-10-10 04:26:35.500",
+            "errornum": 0,
+            "fileTime": [
+              23.295,
+              25.73,
+              24.953,
+              24.152,
+              24.875,
+              23.37,
+              25.701,
+              25.019,
+              25.018,
+              24.462
+            ],
+            "modeType": 11,
+            "num": 10,
+            "parallel": 0,
+            "sucnum": 10,
+            "time": 246.785,
+            "userName": "admin"
+          },
+          {
+            "Id": "0dfa803f-f911-4d3c-a723-30de6a930006",
+            "averageTime": 24.9232,
+            "consumernum": 1,
+            "createTime": "2023-10-10 04:10:37.597",
+            "errornum": 0,
+            "fileTime": [
+              24.988,
+              24.996,
+              24.476,
+              25.48,
+              24.671
+            ],
+            "modeType": 12,
+            "num": 29,
+            "parallel": 1,
+            "sucnum": 5,
+            "time": 124.616,
+            "userName": "admin"
+          },
+          {
+            "Id": "ccf50e8f-52d3-419f-abc7-0e1b5884b911",
+            "averageTime": 24.808799999999998,
+            "consumernum": 1,
+            "createTime": "2023-10-10 03:41:23.910",
+            "errornum": 0,
+            "fileTime": [
+              24.754,
+              25.227,
+              24.988,
+              25.045,
+              23.99
+            ],
+            "modeType": 12,
+            "num": 5,
+            "parallel": 0,
+            "sucnum": 5,
+            "time": 124.044,
+            "userName": "admin"
+          },
+          {
+            "Id": "22c58cfd-d352-4711-af3c-9faa0b026f45",
+            "averageTime": 7.7577037037037035,
+            "consumernum": 5,
+            "createTime": "2023-10-10 03:34:58.987",
+            "errornum": 0,
+            "fileTime": [
+              25.006,
+              38.761,
+              38.078,
+              36.889,
+              37.028,
+              36.968,
+              36.851,
+              25.009,
+              35.965,
+              36.025,
+              24.057,
+              36.97,
+              36.904,
+              35.988,
+              35.968,
+              24.945,
+              37.081,
+              37.074,
+              38.117,
+              37.954,
+              25.155,
+              23.938,
+              39.914,
+              39.891,
+              38.338,
+              37.471,
+              25.865
+            ],
+            "modeType": 13,
+            "num": 27,
+            "parallel": 0,
+            "sucnum": 27,
+            "time": 209.458,
+            "userName": "admin"
+          },
+          {
+            "Id": "103ed4f4-2985-47c4-a17c-0735c795a229",
+            "averageTime": 24.928,
+            "consumernum": 1,
+            "createTime": "2023-10-10 03:31:36.129",
+            "errornum": 0,
+            "fileTime": [
+              24.86,
+              24.981,
+              25.022,
+              25.0,
+              24.775
+            ],
+            "modeType": 13,
+            "num": 5,
+            "parallel": 0,
+            "sucnum": 5,
+            "time": 124.64,
+            "userName": "admin"
+          },
+          {
+            "Id": "dcc70acd-4b55-466f-a62d-544e21d941b3",
+            "averageTime": 8.4035,
+            "consumernum": 4,
+            "createTime": "2023-10-10 03:14:05.820",
+            "errornum": 0,
+            "fileTime": [
+              25.788,
+              24.921,
+              25.062,
+              25.078,
+              37.216,
+              37.057,
+              24.984,
+              24.238,
+              37.466,
+              37.421,
+              25.73,
+              25.004
+            ],
+            "modeType": 11,
+            "num": 27,
+            "parallel": 4,
+            "sucnum": 12,
+            "time": 100.842,
+            "userName": "admin"
+          },
+          {
+            "Id": "5faaee98-781b-463f-a81b-84bfda602c33",
+            "averageTime": 24.264400000000002,
+            "consumernum": 1,
+            "createTime": "2023-10-10 03:09:17.486",
+            "errornum": 0,
+            "fileTime": [
+              24.08,
+              24.94,
+              24.101,
+              24.047,
+              24.151
+            ],
+            "modeType": 11,
+            "num": 5,
+            "parallel": 0,
+            "sucnum": 5,
+            "time": 121.322,
+            "userName": "admin"
+          },
+          {
+            "Id": "c25cfddb-5ee0-4098-a76d-c2d77b2910c5",
+            "averageTime": 24.3536,
+            "consumernum": 1,
+            "createTime": "2023-10-10 03:01:19.908",
+            "errornum": 0,
+            "fileTime": [
+              23.981,
+              24.044,
+              24.929,
+              24.08,
+              24.732
+            ],
+            "modeType": 11,
+            "num": 5,
+            "parallel": 0,
+            "sucnum": 5,
+            "time": 121.768,
+            "userName": "admin"
+          }
+        ])
+      },100)
+    })
+  }
+  return request<any>(`/bigIntelligence/v1/getTaskAverageTime`, {
+    method: 'GET',
+    params
+  });
+}
+
 export function getAverageTreatment(params?:any){
   if(global_config.localData){
     return new Promise<AxiosResponse<T>>(resolve => {

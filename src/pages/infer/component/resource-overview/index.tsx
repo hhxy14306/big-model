@@ -209,6 +209,7 @@ export default () => {
   useEffect(()=>{
     getNodeStatusData().then();
     const timer = setInterval( async ()=>{
+      console.log("refetch")
       await refetch();
       getNodeStatusData().then();
     }, 5 * 1000);

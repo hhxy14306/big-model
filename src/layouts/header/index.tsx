@@ -105,8 +105,15 @@ export default function Header(props) {
   return (
     <div className={styles.headerLayout}>
       <div className={styles.leftArea}>
-        <img src={logo} alt=""/>
-        <span className={styles.title}>遥感大模型一体推理平台</span>
+        {/*<img src={logo} alt=""/>*/}
+        <span className={styles.title}>
+          <span className={styles.titleLevel1}>
+            <div>空天</div>
+            <div className={styles.dot}/>
+            <div>灵犀</div>
+          </span>
+          <span className={styles.titleLevel2}>遥感智能训推一体平台</span>
+        </span>
       </div>
       <div className={styles.contentArea}>
         <Menu theme="dark" onClick={onClick} selectedKeys={[current]} mode="horizontal" items={menuData} />
