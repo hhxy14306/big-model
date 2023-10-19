@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import { getResourceUsage} from "@/services/infer";
 import {useQuery} from "umi";
 import {Line} from "@ant-design/plots";
@@ -8,12 +8,6 @@ import dayjs from "dayjs";
 
 export default function (){
 
-    const modeTypeConfig = {
-        11: '分割',
-        12: '分类',
-        13: '识别',
-        14: '变化'
-    }
     const [params, setParams] = useState(1)
 
     const [config, setConfig] = useImmer({
@@ -49,7 +43,7 @@ export default function (){
         yAxis: {
             label: {
                 formatter: (v) => {
-                    return `${v}%`
+                    return `${v ||0}%`
                 }
             },
             //tickInterval: 10
@@ -84,7 +78,7 @@ export default function (){
         },
         tooltip: {
             formatter: (datum) => {
-                return { name: datum.name, value: datum.usage + '%' };
+                return { name: datum.name, value: (datum.usage||0) + '%' };
             },
         },
         smooth: true,
@@ -92,6 +86,12 @@ export default function (){
 
     useQuery(['getResourceUsage'], getData);
 
+    useEffect(()=>{
+        const timer = setInterval(()=>{
+           getData()
+        },3000);
+        return ()=>clearInterval(timer);
+    },[])
 
     //近num小时转换成xAxis
     function getAxis(num){
@@ -178,7 +178,7 @@ export default function (){
 
     return (
         <div className={styles.wrapperChartRate}>
-            <div className={styles.title}>遥感数据平均处理时间（秒/张）</div>
+            <div className={styles.title}>资源使用率</div>
             <Line {...config} />
             {
                 config.data.length === 0 && <div className={styles.noData}>暂无数据</div>

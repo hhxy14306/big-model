@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getAverageTreatment} from "@/services/infer";
 import {useQuery} from "umi";
 import {Line} from "@ant-design/plots";
@@ -80,6 +80,17 @@ export default function (){
             },
         },
         smooth: true,
+        lineStyle: {
+            //stroke: 'black',
+            lineWidth: 2,
+           // lineDash: [4,5],
+            strokeOpacity: 0.7,
+            shadowColor: 'black',
+            shadowBlur: 10,
+            shadowOffsetX: 5,
+            shadowOffsetY: 5,
+            cursor: 'pointer'
+        }
     });
 
     useQuery(['getAverageTreatment'], getData);
@@ -125,9 +136,17 @@ export default function (){
         });
     }
 
+    useEffect(()=>{
+        const timer = setInterval(()=>{
+            getData()
+        },3000);
+        return ()=>clearInterval(timer);
+    },[])
+
     async function getData(){
         try{
             const res = await getAverageTreatment(getParams(params));
+            console.log("getAverageTreatment",res)
             let total = 0;
             //---临时添加
             let currentTime = new Date();

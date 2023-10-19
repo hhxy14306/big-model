@@ -2,20 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d26e99aa-ee19-4e7d-bcf9-c5c6f347159d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/global.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/global.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/header/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/header/index.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/infer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/infer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/big-model.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/547.6bf59ddf.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/569.6910ab50.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/big-model/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-model/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/layouts__index.3741bbda.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/layouts__index.5d490222.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.63b109cd.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.c252a250.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/static/logo.4b2c35da.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/umi.1b31fad0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/infer/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/index.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +127,7 @@
       <workItem from="1696473810689" duration="2484000" />
       <workItem from="1696495609995" duration="73905000" />
       <workItem from="1697506326925" duration="43000" />
-      <workItem from="1697510239977" duration="11985000" />
+      <workItem from="1697510239977" duration="15729000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1695344792615</created>
@@ -154,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696497891285</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="&#10;a">
+      <created>1697624962631</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1697624962631</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +177,7 @@
     </ignored-roots>
     <MESSAGE value="a" />
     <MESSAGE value="a123" />
-    <option name="LAST_COMMIT_MESSAGE" value="a123" />
+    <MESSAGE value="&#10;a" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;a" />
   </component>
 </project>

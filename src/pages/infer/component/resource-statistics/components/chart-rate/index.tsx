@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {getTaskAverageTime} from "@/services/infer";
 import {useQuery} from "umi";
 import {Column} from "@ant-design/plots";
@@ -20,11 +20,26 @@ export default function (){
         xField: 'createTime',
         yField: 'consumernum',
         seriesField: "modeTypeName",
+        //stroke: 'l(0) 0:#ffffff 0.5:#7ec2f3 1:#1890ff',
         theme:{
-            minColumnWidth: 20
+            minColumnWidth: 20,
+            defaultColor: 'red'
         },
         scrollbar:{
           x: {}
+        },
+        columnStyle: {
+            // fill: 'red',
+            fillOpacity: 0.5,
+            //stroke: 'black',
+            lineWidth: 1,
+            lineDash: [4,5],
+            strokeOpacity: 0.7,
+            shadowColor: 'black',
+            shadowBlur: 10,
+            shadowOffsetX: 5,
+            shadowOffsetY: 5,
+            cursor: 'pointer'
         },
         xAxis: {
             // type: 'timeCat',
@@ -51,6 +66,7 @@ export default function (){
                 formatter: (name) => name,
             },
         },
+
         label: {
             // 可手动配置 label 数据标签位置
             position: 'middle',
@@ -93,6 +109,13 @@ export default function (){
     });
 
     useQuery(['getTaskAverageTime'], getData);
+
+    useEffect(()=>{
+        const timer = setInterval(()=>{
+            getData()
+        },3000);
+        return ()=>clearInterval(timer);
+    },[])
 
     async function getData(){
         try {
