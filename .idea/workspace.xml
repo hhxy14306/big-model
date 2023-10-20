@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d26e99aa-ee19-4e7d-bcf9-c5c6f347159d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/task-mgt/index.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/task-mgt/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/warehouse-mgt/add-board.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/warehouse-mgt/index.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/warehouse-mgt/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/warehouse.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/big-model.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/539.796ef6d2.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/569.eda49c80.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/69.a7b9f128.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-model/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/layouts__index.6e930915.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.8f2c8d8e.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.b28badc4.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__log__index.d5d0da66.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__resource__index.bc7e888a.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__resource__index.e151554d.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__user-mgt__index.06e9bc06.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__user-mgt__index.50713706.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__warn__index.2c63f34e.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__warn__index.c6118d44.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/umi.b2b4ddfe.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/router.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/header/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/header/index.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/log/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/log/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/task-mgt/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/task-mgt/index.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +55,7 @@
       <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/index" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -136,7 +112,7 @@
       <workItem from="1696473810689" duration="2484000" />
       <workItem from="1696495609995" duration="73905000" />
       <workItem from="1697506326925" duration="43000" />
-      <workItem from="1697510239977" duration="30446000" />
+      <workItem from="1697510239977" duration="31279000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1695344792615</created>
