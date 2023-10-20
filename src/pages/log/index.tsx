@@ -11,20 +11,20 @@ export default function (props) {
 
     const columns: ColumnsType<DataType> = [
         {
-            title: '时间',
-            dataIndex: 'log_time',
-            key: 'log_time',
-            ellipsis: true,
-            render: text=>dayjs(text).format('YYYY-MM-DD HH:MM:ss:ms')
+            title: '板卡名称',
+            dataIndex: 'card_type',
+            key: 'card_type',
+            render: text=>{
+                const logInfo={
+                    info: '通知',
+                    warn: '警告',
+                    error: '错误',
+                }
+                return logInfo[text]
+            }
         },
         {
-            title: '来源',
-            dataIndex: 'log_source',
-            key: 'log_source',
-            ellipsis: true,
-        },
-        {
-            title: '类型',
+            title: '日志类型',
             dataIndex: 'log_type',
             key: 'log_type',
             render: text=>{
@@ -37,9 +37,16 @@ export default function (props) {
             }
         },
         {
-            title: '内容',
+            title: '日志内容',
             dataIndex: 'log_content',
             key: 'log_content',
+        },
+        {
+            title: '日志时间',
+            dataIndex: 'log_time',
+            key: 'log_time',
+            ellipsis: true,
+            render: text=>dayjs(text).format('YYYY-MM-DD HH:MM:ss:ms')
         },
     ];
 

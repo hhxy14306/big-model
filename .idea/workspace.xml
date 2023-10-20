@@ -2,23 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d26e99aa-ee19-4e7d-bcf9-c5c6f347159d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pages/task-mgt/index.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/task-mgt/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/warehouse-mgt/add-board.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/warehouse-mgt/index.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/warehouse-mgt/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/warehouse.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/big-model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/big-model.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/547.6bf59ddf.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/569.6910ab50.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/big-model/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/539.796ef6d2.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/569.eda49c80.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/69.a7b9f128.async.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/big-model/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-model/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/layouts__index.3741bbda.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/layouts__index.5d490222.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.63b109cd.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.c252a250.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/static/logo.4b2c35da.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/umi.1b31fad0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/layouts__index.6e930915.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.8f2c8d8e.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.b28badc4.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__log__index.d5d0da66.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__resource__index.bc7e888a.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__resource__index.e151554d.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__user-mgt__index.06e9bc06.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__user-mgt__index.50713706.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__warn__index.2c63f34e.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__warn__index.c6118d44.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/umi.b2b4ddfe.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/header/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/header/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/log/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/log/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,7 +58,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/warehouse-mgt" />
     <property name="nodejs_package_manager_path" value="pnpm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -59,18 +68,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/warehouse-mgt" />
+      <recent name="$PROJECT_DIR$/src/services" />
+      <recent name="$PROJECT_DIR$/src/pages" />
+      <recent name="$PROJECT_DIR$/src/pages/sz-mgt" />
       <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components" />
-      <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time" />
-      <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-overview/dir-detail" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate" />
       <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/index" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -103,8 +112,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -127,7 +136,7 @@
       <workItem from="1696473810689" duration="2484000" />
       <workItem from="1696495609995" duration="73905000" />
       <workItem from="1697506326925" duration="43000" />
-      <workItem from="1697510239977" duration="15729000" />
+      <workItem from="1697510239977" duration="30446000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1695344792615</created>

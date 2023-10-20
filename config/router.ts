@@ -1,7 +1,7 @@
 export default [
     {
         path: '/',
-        redirect: '/infer',
+        redirect: '/resource-mgt',
         hideInMenu: true
     },
     {
@@ -11,26 +11,48 @@ export default [
         hideInMenu: true
     },
     {
-        name: '推理',
+        name: '资源管理',
         icon: 'inferIcon',
         customIcon: {
             fill: 'white',
             width: '.2rem',
             height: '.2rem'
         },
-        path: '/infer',
+        path: '/resource-mgt',
         component: 'infer',
     },
     {
-        name: '资源',
+        name: '算子管理',
         icon: 'resourceIcon',
         customIcon: {
             fill: 'white',
             width: '.2rem',
             height: '.2rem',
         },
-        path: '/resource',
-        component: 'resource',
+        path: '/warehouse-mgt',
+        component: 'warehouse-mgt',
+    },
+    // {
+    //     name: '资源',
+    //     icon: 'resourceIcon',
+    //     customIcon: {
+    //         fill: 'white',
+    //         width: '.2rem',
+    //         height: '.2rem',
+    //     },
+    //     path: '/resource',
+    //     component: 'resource',
+    // },
+    {
+        name: '任务管理',
+        icon: 'logIcon',
+        customIcon: {
+            fill: 'white',
+            width: '.2rem',
+            height: '.2rem',
+        },
+        path: '/task-mgt',
+        component: 'task-mgt',
     },
     {
         name: '日志',
@@ -43,40 +65,28 @@ export default [
         path: '/log',
         component: 'log',
     },
-    {
-        name: '告警',
-        icon: 'warnIcon',
-        customIcon: {
-            fill: 'white',
-            width: '.2rem',
-            height: '.2rem',
-        },
-        path: '/warn',
-        component: 'warn',
-    },
-    {
-        name: '影像可视化',
-        icon: 'studioVisualizeIcon',
-        href: 'http://baidu.com',
-        customIcon: {
-            fill: 'white',
-            width: '.2rem',
-            height: '.2rem',
-        },
-        path: '/studio-visualize',
-        //node-info: './studio-visualize',
-    },
-    {
-        name: '用户管理',
-        icon: 'userMgt',
-        customIcon: {
-            fill: 'white',
-            width: '.2rem',
-            height: '.2rem',
-        },
-        path: '/user-mgt',
-        component: 'user-mgt',
-    },
+    // {
+    //     name: '告警',
+    //     icon: 'warnIcon',
+    //     customIcon: {
+    //         fill: 'white',
+    //         width: '.2rem',
+    //         height: '.2rem',
+    //     },
+    //     path: '/warn',
+    //     component: 'warn',
+    // },
+    // {
+    //     name: '用户管理',
+    //     icon: 'userMgt',
+    //     customIcon: {
+    //         fill: 'white',
+    //         width: '.2rem',
+    //         height: '.2rem',
+    //     },
+    //     path: '/user-mgt',
+    //     component: 'user-mgt',
+    // },
     // {
     //     name: '仓库信息',
     //     icon: 'warehouse',
