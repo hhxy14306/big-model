@@ -112,7 +112,7 @@ export default function (){
 
     useEffect(()=>{
         const timer = setInterval(()=>{
-            getData()
+            getData().then()
         },3000);
         return ()=>clearInterval(timer);
     },[])

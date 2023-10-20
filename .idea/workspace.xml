@@ -3,22 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d26e99aa-ee19-4e7d-bcf9-c5c6f347159d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/big-model.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/547.6bf59ddf.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/569.6910ab50.async.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/big-model/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/big-model/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/big-model/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-model/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/layouts__index.3741bbda.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/layouts__index.5d490222.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.63b109cd.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.c252a250.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/static/logo.4b2c35da.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/umi.1b31fad0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.8f2c8d8e.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.b28badc4.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model/umi.b2b4ddfe.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/infer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/infer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="dev-1019" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,7 +63,7 @@
       <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/index" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -103,9 +96,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>

@@ -88,7 +88,7 @@ export default function (){
 
     useEffect(()=>{
         const timer = setInterval(()=>{
-           getData()
+           getData().then()
         },3000);
         return ()=>clearInterval(timer);
     },[])
@@ -145,7 +145,6 @@ export default function (){
                 {key: 'mem_use_num', label: '内存'},
             ]
             if(res.success && res.data ){
-                console.log(res.data)
                 res.data?.forEach(item=>{
                     mapConfig.forEach(i=>{
                         //console.log(item.time, dayjs(item.time).format('YYYY-MM-DD HH:mm:ss'),dayjs(item.time).format('YYYY-MM-DD HH:mm:ss'))
@@ -156,23 +155,24 @@ export default function (){
                             usage: item[i.key],
                             time2: item.time,
                         })
+                        total++;
                     })
                 });
-            }
-            setConfig(draft => {
-                draft.data = data.sort((pre, next)=> pre.time2 - next.time2);
-                if(total === 0){
-                  draft.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
-                }
+                setConfig(draft => {
+                    draft.data = data.sort((pre, next)=> pre.time2 - next.time2);
+                    if(total === 0){
+                        draft.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
+                    }
+                });
                 if(data.length === 0){
-                  onResourceUsageDataNoData()
+                    onResourceUsageDataNoData()
                 }
-            });
+            }
+            return res
         }catch (e) {
             console.log(e)
             onResourceUsageDataNoData()
         }
-        return null
     }
 
 

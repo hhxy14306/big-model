@@ -7,13 +7,6 @@ import styles from './index.less'
 import dayjs from "dayjs";
 
 export default function (){
-
-    const modeTypeConfig = {
-        11: '分割',
-        12: '分类',
-        13: '识别',
-        14: '变化'
-    }
     const [params, setParams] = useState(1)
 
     const [config, setConfig] = useImmer({
@@ -130,7 +123,7 @@ export default function (){
                 data.push({name, usage, time: timeList});
             })
         })
-        setChartsConfig(draft => {
+        setConfig(draft => {
             draft.data = data;
             draft.yAxis.tickMethod = ()=>[0, 20, 40, 60, 80, 100];
         });
@@ -138,7 +131,7 @@ export default function (){
 
     useEffect(()=>{
         const timer = setInterval(()=>{
-            getData()
+            getData().then()
         },3000);
         return ()=>clearInterval(timer);
     },[])
@@ -199,7 +192,6 @@ export default function (){
                 }
                 draft.data = data;
             });
-
         }catch (e) {
             console.log(e)
             onAverageTreatmentNoData();
