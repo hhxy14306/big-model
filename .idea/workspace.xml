@@ -3,15 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d26e99aa-ee19-4e7d-bcf9-c5c6f347159d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/big-model/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-model/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.8f2c8d8e.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/p__infer__index.b28badc4.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-model/umi.b2b4ddfe.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-resource-usage/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-time/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/infer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/infer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/big-model.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
