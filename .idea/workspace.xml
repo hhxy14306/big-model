@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d26e99aa-ee19-4e7d-bcf9-c5c6f347159d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/infer/inferCard.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-overview/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/infer" />
     <property name="nodejs_package_manager_path" value="pnpm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -51,18 +56,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/infer" />
       <recent name="$PROJECT_DIR$/src/pages/warehouse-mgt" />
       <recent name="$PROJECT_DIR$/src/services" />
       <recent name="$PROJECT_DIR$/src/pages" />
       <recent name="$PROJECT_DIR$/src/pages/sz-mgt" />
-      <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/chart-rate" />
       <recent name="$PROJECT_DIR$/src/pages/infer/component/resource-statistics/components/index" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -95,8 +100,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.start" />
@@ -122,6 +127,7 @@
       <workItem from="1696495609995" duration="73905000" />
       <workItem from="1697506326925" duration="43000" />
       <workItem from="1697510239977" duration="31575000" />
+      <workItem from="1698758518275" duration="1865000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1695344792615</created>

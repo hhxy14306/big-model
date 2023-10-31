@@ -69,9 +69,8 @@ service.interceptors.response.use(
               window.location.hash = '/login';
             }
           })
-        }else {
-          return res;
         }
+        return
       case 2001: break;
 
     }

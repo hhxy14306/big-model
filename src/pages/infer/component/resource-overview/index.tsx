@@ -10,6 +10,7 @@ import identify from '@/assets/identify.png'
 import changes from '@/assets/changes.png'
 import { CheckOutlined, DownOutlined } from '@ant-design/icons/lib/icons';
 import { ReactComponent as ShaLou } from '@/assets/svg/shalou.svg';
+import { ReactComponent as InferCard } from '@/assets/infer/inferCard.svg';
 import ModelConfig from './model-config'
 import CreateTask from './create-task'
 import DirDetail from './dir-detail'
@@ -283,7 +284,10 @@ export default () => {
                 data?.map((item,index)=>(
                   <div className={classnames(styles.wrapperCalculation)} key={item.id +"-"+index}>
                     <div className={styles.calculationHeader}>
-                      <span className={styles.calculationTitle}>推理卡（{item.name}）</span>
+                      <span className={styles.calculationTitle}>
+                        <InferCard width={28} height={28} fill="rgb(126,169,245)"/>
+                        <span className={styles.title}> 推理卡（{item.name}）</span>
+                      </span>
                       <Row className={styles.calculationInfo}>
                         {
                           chainInfo.map(chainInfoItem=>{

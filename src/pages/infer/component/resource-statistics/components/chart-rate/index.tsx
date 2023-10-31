@@ -120,13 +120,16 @@ export default function (){
     async function getData(){
         try {
             const res = await getTaskAverageTime();
-            setConfig(draft => {
-                draft.data = res.map(item=>({
-                    ...item,
-                    modeTypeName: modeTypeConfig[item.modeType]
-                }));
-            })
-            return res
+            console.log(res)
+            if(res){
+                setConfig(draft => {
+                    draft.data = res?.map(item=>({
+                        ...item,
+                        modeTypeName: modeTypeConfig[item.modeType]
+                    }));
+                })
+                return res
+            }
         }catch (e) {
 
         }

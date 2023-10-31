@@ -21,25 +21,27 @@
       .calculationHeader{
         display: flex;
         align-items: center;
+        font-size: .16rem;
         //margin-bottom: .15rem;
 
         .calculationTitle{
-          border-left: .05rem solid rgb(64,145,247);
-          font-size: .18rem;
-          padding-left: .05rem;
+          display: flex;
+          align-items: center;
           font-weight: 600;
-          height: .18rem;
-          line-height: .18rem;
           flex: none;
+          .title{
+            margin-left: .1rem;
+          }
         }
         .calculationInfo{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(to right, rgb(235,242,252),rgb(51,129,246),rgb(50,100,255) , rgb(51,129,246), rgb(235,242,252));
+          color: white;
+          width: 100%;
+          padding: .02rem 0;
 
-          margin-left: .4rem;
-          width: calc(100% - 2.4rem);
-
-          .wrapperCalculationInfo{
-            font-size: .18rem;
-          }
           .chainInfoItemValue{
             margin-left: .1rem;
           }
@@ -54,7 +56,7 @@
         flex-wrap: wrap;
         gap: .2rem;
 
-        justify-content: space-evenly;
+        //justify-content: space-evenly;
 
         .calculationItem{
           display: flex;
